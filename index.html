@@ -386,6 +386,33 @@
     .contact-biglink .val { font-family: "Plus Jakarta Sans", sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--teal); }
 
     footer { background: #091421; border-top: 1px solid rgba(255,255,255,.06); }
+    /* ── AVIS GOOGLE ── */
+    #avis { padding: 5rem 5%; }
+    .avis-header { display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+    .avis-score { font-family: "Plus Jakarta Sans", sans-serif; font-size: 3rem; font-weight: 800; color: var(--teal); line-height: 1; }
+    .avis-score span { font-size: 1.4rem; color: var(--muted); font-weight: 500; }
+    .avis-stars { font-size: 1.5rem; color: var(--amber); letter-spacing: .1em; }
+    .avis-label { font-size: .82rem; color: var(--muted); }
+    .avis-sublabel { font-size: .74rem; color: var(--muted); opacity: .7; margin-top: .15rem; font-style: italic; }
+    .avis-link { display: inline-flex; align-items: center; gap: .35rem; font-size: .8rem; font-weight: 700; color: var(--teal); text-decoration: none; margin-left: auto; border: 1px solid rgba(0,200,160,.3); padding: .4rem .9rem; border-radius: 50px; transition: background .2s; }
+    .avis-link:hover { background: rgba(0,200,160,.08); }
+    .avis-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; }
+    .avis-card { background: var(--card-bg); border: 1px solid rgba(255,255,255,.07); border-radius: 18px; padding: 1.4rem 1.6rem; display: flex; flex-direction: column; gap: .9rem; transition: transform .2s, border-color .2s; }
+    .avis-card:hover { transform: translateY(-4px); border-color: rgba(0,200,160,.25); }
+    .avis-card-top { display: flex; align-items: center; gap: .75rem; }
+    .avis-avatar { width: 40px; height: 40px; border-radius: 50%; background: rgba(0,200,160,.18); color: var(--teal); font-family: "Plus Jakarta Sans", sans-serif; font-size: .8rem; font-weight: 700; display: grid; place-items: center; flex-shrink: 0; letter-spacing: .03em; }
+    .avis-name { font-family: "Plus Jakarta Sans", sans-serif; font-size: .88rem; font-weight: 700; }
+    .avis-stars-sm { font-size: .78rem; color: var(--amber); letter-spacing: .08em; margin-top: .1rem; }
+    .avis-google-icon { margin-left: auto; width: 28px; height: 28px; border-radius: 50%; background: white; display: grid; place-items: center; font-family: "Plus Jakarta Sans", sans-serif; font-size: .82rem; font-weight: 800; color: #4285F4; flex-shrink: 0; }
+    .avis-text { font-size: .83rem; color: rgba(255,255,255,.72); line-height: 1.65; font-style: italic; flex: 1; }
+    @media (max-width: 600px) {
+      #avis { padding: 4rem 4%; }
+      .avis-header { gap: .8rem; }
+      .avis-score { font-size: 2.2rem; }
+      .avis-link { margin-left: 0; }
+      .avis-grid { grid-template-columns: 1fr; }
+    }
+
     .footer-main { display: flex; flex-wrap: wrap; gap: 2rem; padding: 2rem 5%; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,.06); }
     .footer-logo img { height: 60px; width: auto; background: white; border-radius: 10px; padding: 5px 8px; object-fit: contain; }
     .footer-info { display: flex; flex-direction: column; gap: .4rem; flex: 1; }
@@ -713,12 +740,103 @@
   </div>
 </section>
 
+
+<!-- ── AVIS GOOGLE ── -->
+<section id="avis" style="background: var(--ink);">
+  <div class="section-tag">Avis Google</div>
+  <h2 class="section-title">Ce que disent nos apprenants</h2>
+  <div class="avis-header reveal">
+    <div class="avis-score">5<span>/5</span></div>
+    <div class="avis-stars">★★★★★</div>
+    <div>
+      <div class="avis-label">Note globale Google</div>
+      <div class="avis-sublabel">Aperçu de quelques avis de nos apprenants</div>
+    </div>
+    <a href="https://www.google.com/search?sxsrf=ANbL-n6EcFMRG5NaYb2HoEja8COWFqK20w:1781426059971&q=MENTOR+NUMERIK+Avis&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxIxNLIwNjY1NDU0tzQxMzGzNDU3N9zAyPiKUdjX1S_EP0jBL9TXNcjTW8GxLLN4ESs2UQD4Yi5bRwAAAA&rldimm=12833515179464695771&tbm=lcl&hl=fr-FR&dpr=2#lkt=LocalPoiReviews" target="_blank" rel="noopener" class="avis-link">Tous les avis Google →</a>
+  </div>
+  <div class="avis-grid">
+
+    <div class="avis-card reveal">
+      <div class="avis-card-top">
+        <div class="avis-avatar">KP</div>
+        <div>
+          <div class="avis-name">Kelly P.</div>
+          <div class="avis-stars-sm">★★★★★</div>
+        </div>
+        <div class="avis-google-icon">G</div>
+      </div>
+      <p class="avis-text">« Très bon formateur à l'écoute, prend son temps pour expliquer. Hâte de recommencer une nouvelle formation avec Mentor Numerik. »</p>
+    </div>
+
+    <div class="avis-card reveal" style="transition-delay:.08s">
+      <div class="avis-card-top">
+        <div class="avis-avatar">CP</div>
+        <div>
+          <div class="avis-name">Claude P.</div>
+          <div class="avis-stars-sm">★★★★★</div>
+        </div>
+        <div class="avis-google-icon">G</div>
+      </div>
+      <p class="avis-text">« Fathi est un formateur altruiste, pragmatique. Il a cette capacité à expliquer l'information de différentes manières afin de la faire passer sans efforts. Agréable, ponctuel, motivant… Merci pour ton enseignement, tes conseils, ta sympathie. »</p>
+    </div>
+
+    <div class="avis-card reveal" style="transition-delay:.16s">
+      <div class="avis-card-top">
+        <div class="avis-avatar">PB</div>
+        <div>
+          <div class="avis-name">Peggy B.</div>
+          <div class="avis-stars-sm">★★★★★</div>
+        </div>
+        <div class="avis-google-icon">G</div>
+      </div>
+      <p class="avis-text">« Très belle expérience avec Mentor Numerik. Fathi est un très bon pédagogue, vraiment disponible et ne compte pas ses heures. À chaque cours un résumé est envoyé. Ce suivi est vraiment une chance pour réussir. J'ai réussi mon examen Excel avec une excellente note alors que je partais de loin ! »</p>
+    </div>
+
+    <div class="avis-card reveal" style="transition-delay:.24s">
+      <div class="avis-card-top">
+        <div class="avis-avatar">DC</div>
+        <div>
+          <div class="avis-name">Denis C.</div>
+          <div class="avis-stars-sm">★★★★★</div>
+        </div>
+        <div class="avis-google-icon">G</div>
+      </div>
+      <p class="avis-text">« Formateur à l'écoute, très bonne connaissance de la formation, réactivité, ponctualité — tout est OK ! Bravo et encore merci. »</p>
+    </div>
+
+    <div class="avis-card reveal" style="transition-delay:.32s">
+      <div class="avis-card-top">
+        <div class="avis-avatar">AB</div>
+        <div>
+          <div class="avis-name">Anne-Hélène B.</div>
+          <div class="avis-stars-sm">★★★★★</div>
+        </div>
+        <div class="avis-google-icon">G</div>
+      </div>
+      <p class="avis-text">« Parfait. Formation très précieuse et en approfondissement alors qu'au départ je n'avais pas le niveau. Formateur très pédagogue. Je recommande. »</p>
+    </div>
+
+    <div class="avis-card reveal" style="transition-delay:.40s">
+      <div class="avis-card-top">
+        <div class="avis-avatar">MP</div>
+        <div>
+          <div class="avis-name">Malory P.</div>
+          <div class="avis-stars-sm">★★★★★</div>
+        </div>
+        <div class="avis-google-icon">G</div>
+      </div>
+      <p class="avis-text">« J'ai réalisé une formation Excel avec Mentor Numerik qui fut une belle réussite. Formateur compétent et pédagogue, avec qui les échanges étaient fluides, agréables et très enrichissants. Les cours sont dynamiques, avec des cas pratiques et beaucoup de contenu. Il a su adapter le programme en fonction de mon évolution et de mon niveau. Je recommande sans aucune hésitation ! Un grand merci pour cette formation. »</p>
+    </div>
+
+  </div>
+</section>
+
 <section id="why">
   <div class="section-tag">Pourquoi nous choisir</div>
   <h2 class="section-title">Mentor Numerik, l'accompagnement<br/>qui fait la différence</h2>
   <div class="why-grid">
     <div class="why-card reveal"><div class="why-icon">🎯</div><h4>100% orienté certification</h4><p>Chaque module prépare directement l'examen ENI RS7536. Pas de contenu superflu.</p></div>
-    <div class="why-card reveal" style="transition-delay:.1s"><div class="why-icon">👨‍🏫</div><h4>Fathi Bendjebbour – Expert</h4><p>CCP1 · Chef de projet Office 365 (2 200 utilisateurs) · Formateur depuis 2023 · +300 accompagnements · Note Google 5/5.</p></div>
+    <div class="why-card reveal" style="transition-delay:.1s"><div class="why-icon">👨‍🏫</div><h4>Fathi Bendjebbour – Votre formateur</h4><p>+20 ans d'expérience dans le numérique · Diplômé technicien informatique, développeur web, certifié ENI · Chef de projet & formateur en entreprise depuis plus de 10 ans · Note Google <strong style="color:var(--amber)">5/5 ⭐</strong></p></div>
     <div class="why-card reveal" style="transition-delay:.2s"><div class="why-icon">🤝</div><h4>Suivi 100 % personnalisé</h4><p>Quiz de positionnement, messagerie directe, adaptation du programme, préparation intensive.</p></div>
     <div class="why-card reveal" style="transition-delay:.05s"><div class="why-icon">💳</div><h4>Financement CPF</h4><p>Formations éligibles au Compte Personnel de Formation. Formez-vous sans avancer d'argent.</p></div>
     <div class="why-card reveal" style="transition-delay:.15s"><div class="why-icon">🏡</div><h4>100 % distanciel synchrone</h4><p>Google Meet, supports PDF + vidéos, Google Classroom, signatures Edusign.</p></div>
