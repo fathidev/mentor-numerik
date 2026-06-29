@@ -17,7 +17,7 @@
       --teal-dk: #009e7e;
       --amber:   #f5a623;
       --white:   #ffffff;
-      --muted:   #6b829a;
+      --muted:   #c2cfe0;
       --card-bg: #162233;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -122,7 +122,7 @@
     }
 
     .nav-links { list-style: none; display: flex; gap: 1.8rem; align-items: center; }
-    .nav-links a { color: rgba(255,255,255,.72); text-decoration: none; font-size: .88rem; font-weight: 500; transition: color .2s; }
+    .nav-links a { color: rgba(255,255,255,.85); text-decoration: none; font-size: .94rem; font-weight: 500; transition: color .2s; }
     .nav-links a:hover { color: var(--teal); }
     .nav-cta { background: var(--teal) !important; color: var(--navy) !important; padding: .5rem 1.3rem; border-radius: 50px; font-weight: 700 !important; transition: background .2s !important; }
     .nav-cta:hover { background: var(--teal-dk) !important; }
@@ -203,7 +203,7 @@
     }
     h1 .accent { color: var(--teal); }
     h1 .amber  { color: var(--amber); }
-    .hero-sub { font-size: 1.05rem; color: rgba(255,255,255,.65); line-height: 1.75; max-width: 540px; margin-bottom: 2rem; animation: fadeUp .7s .2s ease both; }
+    .hero-sub { font-size: 1.05rem; color: rgba(255,255,255,.95); line-height: 1.75; max-width: 540px; margin-bottom: 2rem; animation: fadeUp .7s .2s ease both; }
     .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; animation: fadeUp .7s .3s ease both; }
     .btn-primary {
       background: var(--teal); color: var(--navy); padding: .8rem 1.9rem; border-radius: 50px;
@@ -218,7 +218,7 @@
     .btn-ghost:hover { border-color: var(--teal); background: rgba(0,200,160,.08); }
     .hero-stats { display: flex; gap: 2.5rem; margin-top: 3rem; animation: fadeUp .7s .4s ease both; flex-wrap: wrap; }
     .stat-val { font-family: "Plus Jakarta Sans", sans-serif; font-size: 1.85rem; font-weight: 800; color: var(--teal); }
-    .stat-lbl { font-size: .78rem; color: var(--muted); margin-top: .1rem; }
+    .stat-lbl { font-size: .85rem; color: var(--muted); margin-top: .1rem; }
     .hero-visual { position: absolute; right: 5%; top: 50%; transform: translateY(-50%); z-index: 1; animation: floatCard 4s ease-in-out infinite; }
     @keyframes floatCard { 0%,100% { transform: translateY(-50%) translateY(0) } 50% { transform: translateY(-50%) translateY(-16px) } }
     .excel-card { width: 310px; background: var(--card-bg); border: 1px solid rgba(0,200,160,.2); border-radius: 18px; overflow: hidden; box-shadow: 0 40px 100px rgba(0,0,0,.5); }
@@ -247,7 +247,7 @@
     .suivi-feat:hover { border-color: rgba(0,200,160,.3); }
     .suivi-feat-icon { font-size: 1.3rem; width: 44px; height: 44px; border-radius: 10px; background: rgba(0,200,160,.12); display: grid; place-items: center; flex-shrink: 0; }
     .suivi-feat-text strong { font-family: "Plus Jakarta Sans", sans-serif; display: block; font-size: .9rem; font-weight: 700; margin-bottom: .2rem; }
-    .suivi-feat-text span { font-size: .82rem; color: var(--muted); line-height: 1.55; }
+    .suivi-feat-text span { font-size: .9rem; color: var(--muted); line-height: 1.55; }
     .suivi-cta-box { background: var(--card-bg); border: 2px solid rgba(0,200,160,.3); border-radius: 22px; padding: 2.5rem; text-align: center; position: relative; overflow: hidden; }
     .suivi-cta-box::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 80% at 50% 0%, rgba(0,200,160,.08) 0%, transparent 70%); }
     .suivi-cta-box .big-icon { font-size: 3rem; margin-bottom: 1rem; position: relative; z-index: 1; }
@@ -270,14 +270,14 @@
     .certif-pill { background: rgba(245,166,35,.15); border: 1px solid rgba(245,166,35,.4); color: var(--amber); padding: .28rem .85rem; border-radius: 50px; font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; display: inline-flex; align-items:center; gap:.35rem; margin-bottom: 1rem; margin-left: .4rem; }
     .certif-pill img { width: 16px; height: auto; }
     .card-title { font-family: "Plus Jakarta Sans", sans-serif; font-size: 1.2rem; font-weight: 700; margin-bottom: .7rem; }
-    .card-desc { color: rgba(255,255,255,.6); font-size: .87rem; line-height: 1.65; margin-bottom: 1.4rem; }
+    .card-desc { color: rgba(255,255,255,.95); font-size: .95rem; line-height: 1.65; margin-bottom: 1.4rem; }
     .card-modules { list-style: none; margin-bottom: 1.6rem; }
-    .card-modules li { display: flex; align-items: flex-start; gap: .55rem; font-size: .82rem; color: rgba(255,255,255,.75); padding: .3rem 0; border-bottom: 1px solid rgba(255,255,255,.05); }
+    .card-modules li { display: flex; align-items: flex-start; gap: .55rem; font-size: .9rem; color: rgba(255,255,255,.95); padding: .3rem 0; border-bottom: 1px solid rgba(255,255,255,.05); }
     .card-modules li::before { content: "✓"; color: var(--teal); font-weight: 700; flex-shrink: 0; }
     .card-modules li.cert-li { align-items: center; }
     .card-modules li.cert-li img { width: 20px; height: auto; flex-shrink: 0; }
     .card-modules li.cert-li::before { content: ""; }
-    .card-meta { display: flex; gap: 1rem; flex-wrap: wrap; font-size: .77rem; color: var(--muted); margin-bottom: 1.4rem; }
+    .card-meta { display: flex; gap: 1rem; flex-wrap: wrap; font-size: .85rem; color: var(--muted); margin-bottom: 1.4rem; }
     .card-footer { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
     .card-price { font-family: "Plus Jakarta Sans", sans-serif; font-size: 1.4rem; font-weight: 800; }
     .card-price small { font-size: .72rem; color: var(--muted); font-family: "DM Sans", sans-serif; font-weight: 400; }
@@ -288,7 +288,7 @@
     .tarif-wrap { margin-top: 3rem; background: var(--card-bg); border: 1px solid rgba(255,255,255,.07); border-radius: 20px; overflow: hidden; }
     .tarif-head { padding: 1.3rem 1.8rem; border-bottom: 1px solid rgba(255,255,255,.07); }
     .tarif-head h3 { font-family: "Plus Jakarta Sans", sans-serif; font-size: 1rem; font-weight: 700; }
-    .tarif-wrap table { width: 100%; border-collapse: collapse; font-size: .84rem; }
+    .tarif-wrap table { width: 100%; border-collapse: collapse; font-size: .9rem; }
     .tarif-wrap thead tr { background: rgba(0,200,160,.08); }
     .tarif-wrap th { padding: .85rem 1.3rem; color: var(--teal); font-weight: 700; white-space: nowrap; text-align: center; }
     .tarif-wrap th:first-child { text-align: left; }
@@ -325,9 +325,9 @@
     }
     .cert-eni-badge img { width: 150px; height: auto; display: block; }
     .cert-visual h3 { font-family: "Plus Jakarta Sans", sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: .5rem; position: relative; z-index: 1; }
-    .cert-visual p { color: var(--muted); font-size: .87rem; line-height: 1.65; position: relative; z-index: 1; }
+    .cert-visual p { color: var(--muted); font-size: .92rem; line-height: 1.65; position: relative; z-index: 1; }
     .cert-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; margin-top: 1.5rem; position: relative; z-index: 1; }
-    .cert-tag { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1); border-radius: 50px; padding: .3rem .82rem; font-size: .72rem; color: rgba(255,255,255,.7); }
+    .cert-tag { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1); border-radius: 50px; padding: .3rem .82rem; font-size: .78rem; color: rgba(255,255,255,.85); }
 
     .process { background: var(--ink); }
     .steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; margin-top: 3rem; position: relative; }
@@ -335,14 +335,14 @@
     .step { text-align: center; padding: 1.5rem 1rem; }
     .step-num { width: 56px; height: 56px; border-radius: 50%; background: var(--card-bg); border: 2px solid rgba(0,200,160,.4); color: var(--teal); font-family: "Plus Jakarta Sans", sans-serif; font-size: 1.1rem; font-weight: 800; display: grid; place-items: center; margin: 0 auto 1.2rem; position: relative; z-index: 1; }
     .step h4 { font-family: "Plus Jakarta Sans", sans-serif; font-size: .95rem; font-weight: 700; margin-bottom: .5rem; }
-    .step p { font-size: .82rem; color: var(--muted); line-height: 1.6; }
+    .step p { font-size: .9rem; color: var(--muted); line-height: 1.6; }
 
     .why-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 3rem; }
     .why-card { background: var(--card-bg); border: 1px solid rgba(255,255,255,.06); border-radius: 18px; padding: 1.8rem; transition: transform .2s, border-color .2s; }
     .why-card:hover { transform: translateY(-4px); border-color: rgba(0,200,160,.25); }
     .why-icon { font-size: 1.8rem; margin-bottom: .9rem; }
     .why-card h4 { font-family: "Plus Jakarta Sans", sans-serif; font-size: .95rem; font-weight: 700; margin-bottom: .45rem; }
-    .why-card p { font-size: .82rem; color: var(--muted); line-height: 1.65; }
+    .why-card p { font-size: .9rem; color: var(--muted); line-height: 1.65; }
 
     .qualiopi-banner { background: white; border-radius: 20px; padding: 2rem 2.5rem; display: flex; align-items: center; gap: 2.5rem; margin-top: 4rem; flex-wrap: wrap; box-shadow: 0 8px 40px rgba(0,0,0,.25); }
     .qualiopi-banner-logo { display: flex; flex-direction: column; align-items: center; gap: .6rem; flex-shrink: 0; }
@@ -381,7 +381,7 @@
     .fin-card.opco .fin-tag { background: rgba(245,166,35,.15); color: var(--amber); }
     .fin-card.ent  .fin-tag { background: rgba(69,123,157,.18); color: #74b3ce; }
     .fin-card.perso .fin-tag { background: rgba(155,93,229,.15); color: #c77dff; }
-    .fin-card p { font-size: .83rem; color: var(--muted); line-height: 1.65; }
+    .fin-card p { font-size: .92rem; color: var(--muted); line-height: 1.65; }
     .fin-card .fin-link { display: inline-flex; align-items: center; gap: .35rem; margin-top: .9rem; font-size: .8rem; font-weight: 700; color: var(--teal); text-decoration: none; transition: opacity .2s; }
     .fin-card .fin-link:hover { opacity: .75; }
     .fin-steps-box { background: var(--card-bg); border: 1px solid rgba(0,200,160,.2); border-radius: 20px; padding: 2rem 2.5rem; }
@@ -391,7 +391,7 @@
     .fin-step:not(:last-child)::after { content: "→"; position: absolute; right: 0; top: 12px; color: var(--teal); font-size: 1.1rem; font-weight: 700; }
     .fin-step-num { width: 36px; height: 36px; border-radius: 50%; background: rgba(0,200,160,.15); border: 1.5px solid rgba(0,200,160,.4); color: var(--teal); font-family: "Plus Jakarta Sans", sans-serif; font-size: .9rem; font-weight: 800; display: grid; place-items: center; flex-shrink: 0; }
     .fin-step-text strong { font-family: "Plus Jakarta Sans", sans-serif; display: block; font-size: .85rem; font-weight: 700; margin-bottom: .2rem; }
-    .fin-step-text span { font-size: .78rem; color: var(--muted); line-height: 1.5; }
+    .fin-step-text span { font-size: .86rem; color: var(--muted); line-height: 1.5; }
 
     #contact { text-align: center; padding: 5.5rem 5%; background: linear-gradient(135deg, rgba(0,200,160,.08) 0%, transparent 60%), linear-gradient(225deg, rgba(245,166,35,.06) 0%, transparent 60%); border-top: 1px solid rgba(255,255,255,.05); }
     #contact h2 { font-family: "Plus Jakarta Sans", sans-serif; font-size: clamp(1.6rem, 2.8vw, 2.5rem); font-weight: 800; letter-spacing: -.015em; margin-bottom: .8rem; }
@@ -411,7 +411,7 @@
     .avis-score span { font-size: 1.4rem; color: var(--muted); font-weight: 500; }
     .avis-stars { font-size: 1.5rem; color: var(--amber); letter-spacing: .1em; }
     .avis-label { font-size: .82rem; color: var(--muted); }
-    .avis-sublabel { font-size: .74rem; color: var(--muted); opacity: .7; margin-top: .15rem; font-style: italic; }
+    .avis-sublabel { font-size: .74rem; color: var(--muted); opacity: .9; margin-top: .15rem; font-style: italic; }
     .avis-link { display: inline-flex; align-items: center; gap: .35rem; font-size: .8rem; font-weight: 700; color: var(--teal); text-decoration: none; margin-left: auto; border: 1px solid rgba(0,200,160,.3); padding: .4rem .9rem; border-radius: 50px; transition: background .2s; }
     .avis-link:hover { background: rgba(0,200,160,.08); }
     .avis-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; }
@@ -422,7 +422,7 @@
     .avis-name { font-family: "Plus Jakarta Sans", sans-serif; font-size: .88rem; font-weight: 700; }
     .avis-stars-sm { font-size: .78rem; color: var(--amber); letter-spacing: .08em; margin-top: .1rem; }
     .avis-google-icon { margin-left: auto; width: 28px; height: 28px; border-radius: 50%; background: white; display: grid; place-items: center; font-family: "Plus Jakarta Sans", sans-serif; font-size: .82rem; font-weight: 800; color: #4285F4; flex-shrink: 0; }
-    .avis-text { font-size: .83rem; color: rgba(255,255,255,.72); line-height: 1.65; font-style: italic; flex: 1; }
+    .avis-text { font-size: .92rem; color: rgba(255,255,255,.95); line-height: 1.65; font-style: italic; flex: 1; }
     @media (max-width: 600px) {
       #avis { padding: 4rem 4%; }
       .avis-header { gap: .8rem; }
@@ -436,7 +436,7 @@
     .footer-info { display: flex; flex-direction: column; gap: .4rem; flex: 1; }
     .footer-info .name { font-family: "Plus Jakarta Sans", sans-serif; font-weight: 800; font-size: 1rem; }
     .footer-info .name span { color: var(--teal); }
-    .footer-info small { font-size: .78rem; color: var(--muted); }
+    .footer-info small { font-size: .85rem; color: var(--muted); }
     /* ── Badges officiels footer (ENI + Qualiopi) ── */
     .footer-badges { display: flex; align-items: flex-start; gap: 1.5rem; flex-shrink: 0; flex-wrap: wrap; }
     .footer-eni-wrap {
@@ -461,7 +461,7 @@
       display: block;
     }
     .footer-eni-mention {
-      font-size: .68rem;
+      font-size: .76rem;
       color: var(--muted);
       text-align: center;
       line-height: 1.5;
@@ -490,7 +490,7 @@
       object-fit: contain;
     }
     .footer-qualiopi-mention {
-      font-size: .68rem;
+      font-size: .76rem;
       color: var(--muted);
       text-align: center;
       line-height: 1.5;
@@ -498,11 +498,11 @@
     .footer-qualiopi-mention strong { color: rgba(255,255,255,.6); }
     .footer-legal { padding: 1rem 5%; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .8rem; border-bottom: 1px solid rgba(255,255,255,.04); }
     .footer-ids { display: flex; gap: .8rem; flex-wrap: wrap; }
-    .footer-ids span { font-size: .74rem; color: var(--muted); background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07); border-radius: 6px; padding: .22rem .65rem; }
+    .footer-ids span { font-size: .8rem; color: var(--muted); background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07); border-radius: 6px; padding: .22rem .65rem; }
     .footer-ids span strong { color: rgba(255,255,255,.6); }
-    .footer-mention { font-size: .72rem; color: var(--muted); max-width: 500px; line-height: 1.55; font-style: italic; }
+    .footer-mention { font-size: .79rem; color: var(--muted); max-width: 500px; line-height: 1.55; font-style: italic; }
     .footer-copy { padding: .8rem 5%; }
-    .footer-copy p { font-size: .74rem; color: var(--muted); }
+    .footer-copy p { font-size: .8rem; color: var(--muted); }
     .footer-copy a { color: var(--teal); text-decoration: none; }
 
     @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
