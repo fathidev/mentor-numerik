@@ -128,8 +128,22 @@
     .nav-cta:hover { background: var(--teal-dk) !important; }
     .nav-qualiopi { height: 38px; width: auto; flex-shrink: 0; }
 
-    .hamburger { display: none; background: none; border: none; cursor: pointer; padding: .4rem; }
-    .hamburger span { display: block; width: 22px; height: 2px; background: var(--white); margin: 5px 0; border-radius: 2px; transition: .3s; }
+    .hamburger {
+      display: none;
+      background: none; border: none; cursor: pointer;
+      padding: .5rem;
+      /* zone de tap confortable (recommandation accessibilité ≥ 44px) */
+      width: 44px; height: 44px;
+      align-items: center; justify-content: center;
+      flex-direction: column;
+      flex-shrink: 0;            /* le burger ne se compresse jamais */
+      position: relative; z-index: 102; /* toujours au-dessus de la nav */
+    }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); margin: 3px 0; border-radius: 2px; transition: .3s; }
+    /* animation croix quand le menu est ouvert */
+    .hamburger.is-open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger.is-open span:nth-child(2) { opacity: 0; }
+    .hamburger.is-open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
     .hero {
       min-height: 100vh; display: flex; align-items: center;
@@ -297,6 +311,11 @@
     .prix-hl { font-weight: 800; color: var(--teal); font-size: 1rem; }
     .tarif-foot { padding: .9rem 1.4rem; display: flex; gap: 1.3rem; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,.06); }
     .tarif-foot span { font-size: .76rem; color: var(--muted); }
+    /* Le tableau scrolle horizontalement dans son cadre sur petit écran */
+    .tarif-wrap > div { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .tarif-wrap table { min-width: 460px; }
+    /* Filet de sécurité global : aucune image ne déborde de son conteneur */
+    img { max-width: 100%; }
 
     .cert-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 3rem; }
     .cert-info p { color: var(--muted); line-height: 1.75; margin-bottom: 1.2rem; }
@@ -466,6 +485,7 @@
       color: var(--muted);
       text-align: center;
       line-height: 1.5;
+      max-width: 150px;   /* empêche l'étalement horizontal */
     }
     .footer-eni-mention strong { color: rgba(255,255,255,.6); }
     .footer-qualiopi-wrap {
@@ -495,6 +515,7 @@
       color: var(--muted);
       text-align: center;
       line-height: 1.5;
+      max-width: 200px;   /* empêche l'étalement horizontal (cause du scroll mobile) */
     }
     .footer-qualiopi-mention strong { color: rgba(255,255,255,.6); }
     .footer-legal { padding: 1rem 5%; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .8rem; border-bottom: 1px solid rgba(255,255,255,.04); }
@@ -512,8 +533,18 @@
 
     @media (max-width: 960px) {
       .nav-links { display: none; }
-      .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(13,27,42,.98); padding: 1.5rem 5%; gap: 1rem; border-bottom: 1px solid rgba(0,200,160,.15); }
-      .hamburger { display: block; }
+      .nav-links.open {
+        display: flex; flex-direction: column;
+        position: absolute; top: 100%; left: 0; right: 0;
+        background: rgba(13,27,42,.98);
+        backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+        padding: 1.5rem 5%; gap: 1rem;
+        border-bottom: 1px solid rgba(0,200,160,.15);
+        /* si le menu est plus haut que l'écran, il devient scrollable */
+        max-height: calc(100vh - 100%); overflow-y: auto;
+      }
+      /* !important : garantit l'affichage même si un CSS/cache externe interfère */
+      .hamburger { display: flex !important; }
       .hero-visual { display: none; }
       .cert-grid { grid-template-columns: 1fr; }
       .steps { grid-template-columns: 1fr 1fr; }
@@ -575,7 +606,7 @@
     </div>
     
   </a>
-  <button class="hamburger" id="hamburger" aria-label="Menu">
+  <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu" aria-controls="nav-links" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
   <ul class="nav-links" id="nav-links">
@@ -1049,8 +1080,13 @@
 
   const btn = document.getElementById('hamburger');
   const menu = document.getElementById('nav-links');
-  btn.addEventListener('click', () => { menu.classList.toggle('open'); });
-  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+  function setMenu(open){
+    menu.classList.toggle('open', open);
+    btn.classList.toggle('is-open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  btn.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
 </script>
 </body>
 </html>
