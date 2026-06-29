@@ -230,6 +230,16 @@
       font-weight: 500; font-size: .95rem; text-decoration: none; transition: border-color .2s, background .2s;
     }
     .btn-ghost:hover { border-color: var(--teal); background: rgba(0,200,160,.08); }
+    .btn-download {
+      display: inline-flex; align-items: center; gap: .55rem;
+      border: 1.5px solid var(--teal); color: var(--teal);
+      background: rgba(0,200,160,.06);
+      padding: .8rem 1.7rem; border-radius: 50px;
+      font-weight: 600; font-size: .95rem; text-decoration: none;
+      transition: background .2s, color .2s, transform .15s, box-shadow .2s;
+    }
+    .btn-download:hover { background: var(--teal); color: var(--navy); transform: translateY(-2px); box-shadow: 0 0 30px rgba(0,200,160,.4); }
+    .btn-download svg { width: 18px; height: 18px; flex-shrink: 0; }
     .hero-stats { display: flex; gap: 2.5rem; margin-top: 3rem; animation: fadeUp .7s .4s ease both; flex-wrap: wrap; }
     .stat-val { font-family: "Plus Jakarta Sans", sans-serif; font-size: 1.85rem; font-weight: 800; color: var(--teal); }
     .stat-lbl { font-size: .85rem; color: var(--muted); margin-top: .1rem; }
@@ -635,6 +645,10 @@
     <div class="hero-actions">
       <a href="#formations" class="btn-primary">Voir les formations</a>
       <a href="#contact" class="btn-ghost">Bilan gratuit →</a>
+      <a href="doc/2026-mentor-numerik-plaquette-excel-eni-rs7536.pdf" download="2026-mentor-numerik-plaquette-excel-eni-rs7536.pdf" class="btn-download" aria-label="Télécharger la plaquette descriptive de la formation au format PDF">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Télécharger la plaquette (PDF)
+      </a>
     </div>
     <div class="hero-stats">
       <div><div class="stat-val">14–21h</div><div class="stat-lbl">Selon le niveau</div></div>
