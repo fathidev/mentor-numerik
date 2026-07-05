@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Questionnaire préalable à l'inscription – Mentor Numerik</title>
+  <meta name="robots" content="noindex" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy:    #0d1b2a;
+      --ink:     #1a2e42;
+      --teal:    #00c8a0;
+      --teal-dk: #009e7e;
+      --amber:   #f5a623;
+      --white:   #ffffff;
+      --muted:   #c2cfe0;
+      --card-bg: #162233;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: "DM Sans", sans-serif; background: var(--navy); color: var(--white); overflow-x: hidden; }
+    img { max-width: 100%; }
+
+    /* ── NAV (reprise du site) ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: .75rem 5%;
+      background: rgba(13,27,42,.95); backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(0,200,160,.15);
+    }
+    .nav-logo { display: flex; align-items: center; gap: .6rem; text-decoration: none; }
+    .nav-logo img { height: 44px; width: auto; border-radius: 10px; background: white; padding: 3px 5px; object-fit: contain; }
+    .nav-brand-text { font-family: "Plus Jakarta Sans", sans-serif; font-weight: 800; font-size: 1rem; letter-spacing: .04em; color: var(--white); white-space: nowrap; }
+    .nav-brand-text span { color: var(--teal); }
+    .nav-back { color: rgba(255,255,255,.85); text-decoration: none; font-size: .9rem; font-weight: 500; transition: color .2s; }
+    .nav-back:hover { color: var(--teal); }
+
+    /* ── EN-TÊTE DE PAGE ── */
+    .page-head { padding: 8rem 5% 2.5rem; max-width: 860px; margin: 0 auto; }
+    .of-badges { display: flex; gap: .45rem; flex-wrap: wrap; margin-bottom: 1.1rem; }
+    .of-badge { display: inline-flex; align-items: center; gap: .32rem; padding: .28rem .75rem; border-radius: 50px; font-size: .7rem; font-weight: 700; letter-spacing: .04em; }
+    .of-badge-qualiopi { background: rgba(0,200,160,.15); border: 1px solid rgba(0,200,160,.35); color: var(--teal); }
+    .of-badge-handicap { background: rgba(245,166,35,.15); border: 1px solid rgba(245,166,35,.35); color: var(--amber); }
+    .page-head h1 { font-family: "Plus Jakarta Sans", sans-serif; font-size: clamp(1.8rem, 3.6vw, 2.7rem); font-weight: 800; line-height: 1.15; letter-spacing: -.02em; margin-bottom: 1rem; }
+    .page-head h1 span { color: var(--teal); }
+    .page-head p { color: var(--muted); line-height: 1.75; max-width: 640px; }
+    .page-ref { font-size: .72rem; color: var(--muted); opacity: .75; letter-spacing: .1em; text-transform: uppercase; margin-top: 1rem; }
+
+    /* ── FORMULAIRE ── */
+    .form-wrap { max-width: 860px; margin: 0 auto; padding: 0 5% 5rem; }
+    .form-card { background: var(--card-bg); border: 1px solid rgba(255,255,255,.07); border-radius: 20px; padding: 1.8rem; margin-bottom: 1.4rem; position: relative; overflow: hidden; }
+    .form-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--teal), var(--teal-dk)); }
+    .sec-head { display: flex; align-items: baseline; gap: .8rem; margin-bottom: .4rem; }
+    .sec-num { font-family: "Plus Jakarta Sans", sans-serif; font-weight: 800; font-size: .82rem; color: var(--teal); background: rgba(0,200,160,.13); border-radius: 8px; padding: .15rem .6rem; }
+    .sec-head h2 { font-family: "Plus Jakarta Sans", sans-serif; font-size: 1.15rem; font-weight: 700; }
+    .sec-note { font-size: .85rem; color: var(--muted); margin-bottom: .8rem; line-height: 1.6; }
+
+    label.q { display: block; font-weight: 600; font-size: .92rem; margin: 1.1rem 0 .5rem; font-family: "Plus Jakarta Sans", sans-serif; }
+    .req { color: var(--teal); }
+    input[type=text], input[type=email], input[type=tel], input[type=date], textarea {
+      width: 100%; padding: .75rem .9rem; border: 1.5px solid rgba(255,255,255,.12); border-radius: 12px;
+      font: inherit; font-size: .92rem; background: rgba(255,255,255,.05); color: var(--white);
+      transition: border-color .2s, background .2s;
+    }
+    input::placeholder, textarea::placeholder { color: rgba(194,207,224,.5); }
+    input:focus, textarea:focus { outline: none; border-color: var(--teal); background: rgba(0,200,160,.06); }
+    textarea { min-height: 90px; resize: vertical; }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0 1.2rem; }
+    @media (max-width: 600px) { .grid2 { grid-template-columns: 1fr; } }
+
+    .opts { display: flex; flex-wrap: wrap; gap: .55rem; }
+    .opts.col { flex-direction: column; gap: .5rem; }
+    .opt {
+      display: flex; align-items: center; gap: .55rem;
+      border: 1.5px solid rgba(255,255,255,.12); border-radius: 12px;
+      padding: .6rem .95rem; cursor: pointer; font-size: .88rem;
+      background: rgba(255,255,255,.03); transition: border-color .2s, background .2s;
+    }
+    .opt:hover { border-color: rgba(0,200,160,.5); }
+    .opt input { accent-color: var(--teal); width: 16px; height: 16px; cursor: pointer; flex-shrink: 0; }
+    .opt:has(input:checked) { border-color: var(--teal); background: rgba(0,200,160,.1); }
+
+    /* Bloc handicap */
+    .handicap-card::before { background: linear-gradient(90deg, var(--amber), #d4891b); }
+    .pledge { background: rgba(245,166,35,.08); border: 1px solid rgba(245,166,35,.3); border-radius: 14px; padding: 1rem 1.2rem; margin: .8rem 0 .4rem; }
+    .pledge-tag { font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--amber); margin-bottom: .45rem; }
+    .pledge p { font-size: .86rem; color: var(--muted); line-height: 1.65; }
+    .pledge .contact { margin-top: .55rem; color: rgba(255,255,255,.92); }
+    .pledge .contact strong { color: var(--amber); }
+
+    /* RGPD + envoi */
+    .rgpd { font-size: .8rem; color: var(--muted); line-height: 1.65; }
+    .rgpd a { color: var(--teal); }
+    .consent { display: flex; gap: .7rem; align-items: flex-start; margin-top: .9rem; font-size: .88rem; cursor: pointer; }
+    .consent input { accent-color: var(--teal); width: 17px; height: 17px; margin-top: 2px; flex-shrink: 0; }
+
+    .submit-zone { text-align: center; margin-top: 1.6rem; }
+    .btn-submit {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      background: var(--teal); color: var(--navy); border: none; cursor: pointer;
+      padding: .95rem 2.4rem; border-radius: 50px; font-weight: 800; font-size: 1rem;
+      transition: background .2s, transform .15s, box-shadow .2s; box-shadow: 0 0 28px rgba(0,200,160,.35);
+    }
+    .btn-submit:hover:not(:disabled) { background: var(--teal-dk); transform: translateY(-2px); box-shadow: 0 0 44px rgba(0,200,160,.5); }
+    .btn-submit:disabled { opacity: .55; cursor: wait; }
+    .form-msg { margin-top: 1rem; font-size: .9rem; display: none; }
+    .form-msg.err { display: block; color: #ff8a8a; }
+
+    /* Confirmation */
+    .done-card { display: none; text-align: center; padding: 3rem 1.8rem; }
+    .done-card.show { display: block; }
+    .done-icon { width: 68px; height: 68px; border-radius: 50%; background: rgba(0,200,160,.15); border: 1.5px solid rgba(0,200,160,.4); display: grid; place-items: center; margin: 0 auto 1.2rem; font-size: 1.8rem; color: var(--teal); }
+    .done-card h2 { font-family: "Plus Jakarta Sans", sans-serif; font-size: 1.4rem; font-weight: 800; margin-bottom: .8rem; }
+    .done-card p { color: var(--muted); max-width: 46ch; margin: 0 auto .5rem; line-height: 1.7; font-size: .92rem; }
+
+    .honeypot { position: absolute; left: -9999px; opacity: 0; height: 0; overflow: hidden; }
+
+    /* Footer (repris du site) */
+    footer { background: #091421; border-top: 1px solid rgba(255,255,255,.06); }
+    .footer-legal { padding: 1.2rem 5%; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .8rem; }
+    .footer-ids { display: flex; gap: .8rem; flex-wrap: wrap; }
+    .footer-ids span { font-size: .8rem; color: var(--muted); background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07); border-radius: 6px; padding: .22rem .65rem; }
+    .footer-ids span strong { color: rgba(255,255,255,.6); }
+    .footer-copy { padding: .8rem 5% 1.2rem; }
+    .footer-copy p { font-size: .8rem; color: var(--muted); }
+    .footer-copy a { color: var(--teal); text-decoration: none; }
+    input:focus-visible, button:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="images/logo-mentor.png" alt="Mentor Numerik" />
+    <span class="nav-brand-text">MENTOR <span>NUMERIK</span></span>
+  </a>
+  <a href="index.html" class="nav-back">← Retour au site</a>
+</nav>
+
+<header class="page-head">
+  <div class="of-badges">
+    <span class="of-badge of-badge-qualiopi">🏅 OF certifié Qualiopi</span>
+    <span class="of-badge of-badge-handicap">♿ Accessible à tous</span>
+  </div>
+  <h1>Questionnaire préalable<br/>à <span>l'inscription</span></h1>
+  <p>Ce questionnaire nous permet d'analyser votre besoin, de vérifier l'adéquation de la formation avec votre projet et d'adapter nos modalités à votre situation. Il ne vous engage à rien. Comptez 10 minutes — vous recevrez un récapitulatif PDF par e-mail.</p>
+  <div class="page-ref">Réf. QST-INSC · Version 1.0 · Juillet 2026</div>
+</header>
+
+<main class="form-wrap">
+  <form id="qform" novalidate>
+
+    <div class="form-card">
+      <div class="sec-head"><h2>Formation envisagée</h2></div>
+      <label class="q" for="f-formation">Quelle formation vous intéresse ? <span class="req">*</span></label>
+      <input type="text" id="f-formation" required placeholder="Ex. : Excel Avancé – Certification ENI RS7536" />
+      <label class="q" for="f-session">Session ou date souhaitée</label>
+      <input type="text" id="f-session" placeholder="Ex. : septembre 2026" />
+    </div>
+
+    <div class="form-card">
+      <div class="sec-head"><span class="sec-num">01</span><h2>Vos coordonnées</h2></div>
+      <div class="grid2">
+        <div><label class="q" for="f-nom">Nom <span class="req">*</span></label><input type="text" id="f-nom" required autocomplete="family-name" /></div>
+        <div><label class="q" for="f-prenom">Prénom <span class="req">*</span></label><input type="text" id="f-prenom" required autocomplete="given-name" /></div>
+        <div><label class="q" for="f-naissance">Date de naissance</label><input type="date" id="f-naissance" /></div>
+        <div><label class="q" for="f-tel">Téléphone <span class="req">*</span></label><input type="tel" id="f-tel" required placeholder="06 …" autocomplete="tel" /></div>
+      </div>
+      <label class="q" for="f-adresse">Adresse</label>
+      <input type="text" id="f-adresse" placeholder="N°, rue, code postal, ville" autocomplete="street-address" />
+      <label class="q" for="f-email">E-mail <span class="req">*</span></label>
+      <input type="email" id="f-email" required placeholder="vous@exemple.fr" autocomplete="email" />
+    </div>
+
+    <div class="form-card">
+      <div class="sec-head"><span class="sec-num">02</span><h2>Votre situation actuelle</h2></div>
+      <label class="q">Quelle est votre situation professionnelle ? <span class="req">*</span></label>
+      <div class="opts" data-group="situation" data-required="1">
+        <label class="opt"><input type="radio" name="situation" value="Salarié(e)">Salarié(e)</label>
+        <label class="opt"><input type="radio" name="situation" value="Demandeur d'emploi">Demandeur d'emploi</label>
+        <label class="opt"><input type="radio" name="situation" value="Indépendant / freelance">Indépendant / freelance</label>
+        <label class="opt"><input type="radio" name="situation" value="Étudiant(e)">Étudiant(e)</label>
+        <label class="opt"><input type="radio" name="situation" value="Autre">Autre</label>
+      </div>
+      <div class="grid2">
+        <div><label class="q" for="f-poste">Poste occupé ou dernier poste</label><input type="text" id="f-poste" /></div>
+        <div><label class="q" for="f-secteur">Secteur d'activité</label><input type="text" id="f-secteur" /></div>
+      </div>
+      <label class="q">Quel est votre niveau de formation le plus élevé ?</label>
+      <div class="opts" data-group="niveau-etudes">
+        <label class="opt"><input type="radio" name="niveau-etudes" value="Sans diplôme">Sans diplôme</label>
+        <label class="opt"><input type="radio" name="niveau-etudes" value="CAP / BEP">CAP / BEP</label>
+        <label class="opt"><input type="radio" name="niveau-etudes" value="Bac">Bac</label>
+        <label class="opt"><input type="radio" name="niveau-etudes" value="Bac +2/3">Bac +2/3</label>
+        <label class="opt"><input type="radio" name="niveau-etudes" value="Bac +4/5 et plus">Bac +4/5 et plus</label>
+      </div>
+    </div>
+
+    <div class="form-card">
+      <div class="sec-head"><span class="sec-num">03</span><h2>Votre projet et vos objectifs</h2></div>
+      <label class="q">Pourquoi souhaitez-vous suivre cette formation ?</label>
+      <div class="opts" data-group="objectifs" data-multi="1">
+        <label class="opt"><input type="checkbox" value="Évolution professionnelle">Évolution professionnelle</label>
+        <label class="opt"><input type="checkbox" value="Reconversion">Reconversion</label>
+        <label class="opt"><input type="checkbox" value="Montée en compétences">Montée en compétences</label>
+        <label class="opt"><input type="checkbox" value="Création d'activité">Création d'activité</label>
+        <label class="opt"><input type="checkbox" value="Obtention d'une certification">Obtention d'une certification</label>
+        <label class="opt"><input type="checkbox" value="Autre">Autre</label>
+      </div>
+      <label class="q" for="f-projet">Décrivez votre projet et ce que vous attendez concrètement de la formation <span class="req">*</span></label>
+      <textarea id="f-projet" required placeholder="Quelques lignes suffisent."></textarea>
+    </div>
+
+    <div class="form-card">
+      <div class="sec-head"><span class="sec-num">04</span><h2>Votre niveau de départ</h2></div>
+      <p class="sec-note">Ces informations nous servent à vérifier les prérequis et à positionner votre parcours. Il n'y a pas de bonne ou de mauvaise réponse.</p>
+      <label class="q">Comment évaluez-vous votre niveau dans le domaine visé ? <span class="req">*</span></label>
+      <div class="opts" data-group="niveau" data-required="1">
+        <label class="opt"><input type="radio" name="niveau" value="Débutant">Débutant</label>
+        <label class="opt"><input type="radio" name="niveau" value="Notions de base">Notions de base</label>
+        <label class="opt"><input type="radio" name="niveau" value="Intermédiaire">Intermédiaire</label>
+        <label class="opt"><input type="radio" name="niveau" value="Avancé">Avancé</label>
+      </div>
+      <label class="q" for="f-experience">Avez-vous déjà suivi une formation ou une expérience dans ce domaine ?</label>
+      <textarea id="f-experience" placeholder="Précisez si oui."></textarea>
+      <label class="q">Disposez-vous d'un ordinateur et d'une connexion internet adaptés (formations à distance) ?</label>
+      <div class="opts" data-group="materiel">
+        <label class="opt"><input type="radio" name="materiel" value="Oui">Oui</label>
+        <label class="opt"><input type="radio" name="materiel" value="Non">Non</label>
+        <label class="opt"><input type="radio" name="materiel" value="En partie">En partie</label>
+      </div>
+    </div>
+
+    <div class="form-card">
+      <div class="sec-head"><span class="sec-num">05</span><h2>Financement envisagé</h2></div>
+      <div class="opts" data-group="financement" data-multi="1">
+        <label class="opt"><input type="checkbox" value="CPF (Mon Compte Formation)">CPF (Mon Compte Formation)</label>
+        <label class="opt"><input type="checkbox" value="France Travail">France Travail</label>
+        <label class="opt"><input type="checkbox" value="OPCO / entreprise">OPCO / entreprise</label>
+        <label class="opt"><input type="checkbox" value="Financement personnel">Financement personnel</label>
+        <label class="opt"><input type="checkbox" value="Autre / je ne sais pas encore">Autre / je ne sais pas encore</label>
+      </div>
+    </div>
+
+    <div class="form-card handicap-card">
+      <div class="sec-head"><span class="sec-num">06</span><h2>Accessibilité et situation de handicap</h2></div>
+      <div class="pledge">
+        <div class="pledge-tag">♿ Notre engagement</div>
+        <p>Nos formations sont ouvertes à toutes et à tous. Si vous êtes en situation de handicap ou rencontrez des difficultés particulières, nous étudions avec vous les adaptations possibles : rythme, supports, modalités d'évaluation, environnement de travail. Réseau AGEFIPH, MDPH, CAP EMPLOI, APAJH. Ces informations restent strictement confidentielles.</p>
+        <p class="contact"><strong>Référent handicap :</strong> Fathi BENDJEBBOUR · 06 47 39 22 84 · contact@mentor-numerik.fr</p>
+      </div>
+      <label class="q">Êtes-vous en situation de handicap ou avez-vous des besoins spécifiques (santé, mobilité, apprentissage…) ? <span class="req">*</span></label>
+      <div class="opts col" data-group="handicap" data-required="1">
+        <label class="opt"><input type="radio" name="handicap" value="Oui">Oui</label>
+        <label class="opt"><input type="radio" name="handicap" value="Non">Non</label>
+        <label class="opt"><input type="radio" name="handicap" value="Je préfère en parler directement avec le référent handicap">Je préfère en parler directement avec le référent handicap</label>
+      </div>
+      <label class="q" for="f-amenagements">Si oui, quels aménagements faciliteraient votre formation ? (accès, supports adaptés, temps supplémentaire, pauses, interprète…)</label>
+      <textarea id="f-amenagements"></textarea>
+      <label class="q">Souhaitez-vous être contacté(e) par notre référent handicap avant l'inscription ?</label>
+      <div class="opts" data-group="contact-referent">
+        <label class="opt"><input type="radio" name="contact-referent" value="Oui">Oui</label>
+        <label class="opt"><input type="radio" name="contact-referent" value="Non">Non</label>
+      </div>
+    </div>
+
+    <div class="form-card">
+      <div class="sec-head"><span class="sec-num">07</span><h2>Vos disponibilités et contraintes</h2></div>
+      <label class="q" for="f-dispo">Quelles sont vos disponibilités (jours, horaires, période) ?</label>
+      <textarea id="f-dispo"></textarea>
+      <label class="q" for="f-contraintes">Avez-vous des contraintes particulières à nous signaler (professionnelles, familiales, géographiques) ?</label>
+      <textarea id="f-contraintes"></textarea>
+      <label class="q">Comment avez-vous connu Mentor Numerik ?</label>
+      <div class="opts" data-group="source">
+        <label class="opt"><input type="radio" name="source" value="Recherche internet">Recherche internet</label>
+        <label class="opt"><input type="radio" name="source" value="Réseaux sociaux">Réseaux sociaux</label>
+        <label class="opt"><input type="radio" name="source" value="Bouche-à-oreille">Bouche-à-oreille</label>
+        <label class="opt"><input type="radio" name="source" value="Mon Compte Formation">Mon Compte Formation</label>
+        <label class="opt"><input type="radio" name="source" value="Autre">Autre</label>
+      </div>
+    </div>
+
+    <div class="form-card">
+      <p class="rgpd">Les informations recueillies servent uniquement à analyser votre besoin et à préparer votre parcours de formation. Elles sont conservées de manière sécurisée et ne sont jamais transmises à des tiers. Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression en écrivant à <a href="mailto:contact@mentor-numerik.fr">contact@mentor-numerik.fr</a>.</p>
+      <label class="consent"><input type="checkbox" id="f-consent" required><span>J'accepte que mes données soient utilisées pour l'analyse de mon besoin de formation. <span class="req">*</span></span></label>
+
+      <!-- Champ anti-spam invisible : doit rester vide -->
+      <div class="honeypot" aria-hidden="true">
+        <label>Ne pas remplir <input type="text" id="f-website" tabindex="-1" autocomplete="off"></label>
+      </div>
+
+      <div class="submit-zone">
+        <button type="submit" class="btn-submit" id="btn-submit">Envoyer mon questionnaire</button>
+        <p class="form-msg err" id="form-err"></p>
+      </div>
+    </div>
+  </form>
+
+  <div class="form-card done-card" id="done">
+    <div class="done-icon">✓</div>
+    <h2>Questionnaire envoyé !</h2>
+    <p>Merci ! Vous recevez dans quelques instants un récapitulatif de vos réponses en PDF à l'adresse indiquée (pensez à vérifier vos indésirables).</p>
+    <p>Nous analysons votre besoin et revenons vers vous sous 24h. Si vous avez signalé un besoin d'adaptation, notre référent handicap vous contactera personnellement.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-legal">
+    <div class="footer-ids">
+      <span>NDA : <strong>11 94 1216 294</strong></span>
+      <span>SIRET : <strong>790 056 626 00019</strong></span>
+      <span>Certification ENI : <strong>RS7536</strong></span>
+    </div>
+  </div>
+  <div class="footer-copy">
+    <p>© 2026 Mentor Numerik · <a href="tel:+33647392284">06 47 39 22 84</a> · <a href="mailto:contact@mentor-numerik.fr">contact@mentor-numerik.fr</a> · <a href="mentions-legales.html">Mentions légales</a></p>
+  </div>
+</footer>
+
+<script>
+  // ═══════════ CONFIGURATION ═══════════
+  // Collez ici l'URL de votre application web Apps Script (déploiement → /exec)
+  const WEBHOOK_URL = 'COLLER_ICI_URL_APPS_SCRIPT/exec';
+
+  const form = document.getElementById('qform');
+  const btn = document.getElementById('btn-submit');
+  const errBox = document.getElementById('form-err');
+
+  function val(id) { return document.getElementById(id).value.trim(); }
+  function groupVal(name, multi) {
+    if (multi) {
+      const checked = [...document.querySelectorAll(`[data-group="${name}"] input:checked`)];
+      return checked.map(c => c.value).join(' · ');
+    }
+    const c = document.querySelector(`input[name="${name}"]:checked`);
+    return c ? c.value : '';
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errBox.style.display = 'none';
+
+    // Validation
+    const manquants = [];
+    if (!val('f-formation')) manquants.push('Formation envisagée');
+    if (!val('f-nom')) manquants.push('Nom');
+    if (!val('f-prenom')) manquants.push('Prénom');
+    if (!val('f-tel')) manquants.push('Téléphone');
+    if (!val('f-email') || !val('f-email').includes('@')) manquants.push('E-mail valide');
+    if (!groupVal('situation')) manquants.push('Situation professionnelle');
+    if (!val('f-projet')) manquants.push('Description de votre projet');
+    if (!groupVal('niveau')) manquants.push('Votre niveau de départ');
+    if (!groupVal('handicap')) manquants.push('Question accessibilité / handicap');
+    if (!document.getElementById('f-consent').checked) manquants.push('Consentement RGPD');
+
+    if (manquants.length) {
+      errBox.textContent = 'Merci de compléter : ' + manquants.join(', ') + '.';
+      errBox.style.display = 'block';
+      errBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    const payload = {
+      website: document.getElementById('f-website').value, // honeypot
+      nom: val('f-nom'),
+      prenom: val('f-prenom'),
+      email: val('f-email'),
+      reponses: [
+        { q: 'Formation envisagée', r: val('f-formation') },
+        { q: 'Session / date souhaitée', r: val('f-session') },
+        { q: 'Nom', r: val('f-nom') },
+        { q: 'Prénom', r: val('f-prenom') },
+        { q: 'Date de naissance', r: val('f-naissance') },
+        { q: 'Adresse', r: val('f-adresse') },
+        { q: 'Téléphone', r: val('f-tel') },
+        { q: 'E-mail', r: val('f-email') },
+        { q: 'Situation professionnelle', r: groupVal('situation') },
+        { q: 'Poste occupé ou dernier poste', r: val('f-poste') },
+        { q: "Secteur d'activité", r: val('f-secteur') },
+        { q: 'Niveau de formation le plus élevé', r: groupVal('niveau-etudes') },
+        { q: 'Pourquoi souhaitez-vous suivre cette formation ?', r: groupVal('objectifs', true) },
+        { q: 'Description du projet et attentes', r: val('f-projet') },
+        { q: 'Niveau auto-évalué dans le domaine visé', r: groupVal('niveau') },
+        { q: 'Formation ou expérience déjà suivie dans ce domaine', r: val('f-experience') },
+        { q: 'Ordinateur et connexion internet adaptés', r: groupVal('materiel') },
+        { q: 'Financement envisagé', r: groupVal('financement', true) },
+        { q: 'Situation de handicap ou besoins spécifiques', r: groupVal('handicap') },
+        { q: 'Aménagements souhaités', r: val('f-amenagements') },
+        { q: 'Souhaite être contacté(e) par le référent handicap', r: groupVal('contact-referent') },
+        { q: 'Disponibilités', r: val('f-dispo') },
+        { q: 'Contraintes particulières', r: val('f-contraintes') },
+        { q: 'Comment avez-vous connu Mentor Numerik ?', r: groupVal('source') },
+        { q: 'Consentement RGPD', r: 'Oui' }
+      ]
+    };
+
+    btn.disabled = true;
+    btn.textContent = 'Envoi en cours…';
+
+    try {
+      const rep = await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        body: JSON.stringify(payload) // pas d'en-tête Content-Type → requête simple, pas de préflight CORS
+      });
+      const data = await rep.json();
+      if (!data.ok) throw new Error(data.error || 'Erreur serveur');
+      form.style.display = 'none';
+      const done = document.getElementById('done');
+      done.classList.add('show');
+      done.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } catch (err) {
+      errBox.textContent = "L'envoi a échoué. Vérifiez votre connexion et réessayez, ou contactez-nous directement au 06 47 39 22 84.";
+      errBox.style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = 'Envoyer mon questionnaire';
+    }
+  });
+</script>
+</body>
+</html>
