@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RECHERCHEV Excel : le guide simple pour croiser vos données | Mentor Numerik</title>
+  <meta name="description" content="Apprenez RECHERCHEV en 5 minutes : syntaxe, exemple concret, les 3 erreurs qui causent #N/A et l'alternative RECHERCHEX. Par Mentor Numerik, centre agréé ENI." />
+  <link rel="canonical" href="https://www.mentor-numerik.fr/blog/recherchev-excel-guide.html" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy:    #0d1b2a;
+      --ink:     #1a2e42;
+      --teal:    #00c8a0;
+      --teal-dk: #009e7e;
+      --amber:   #f5a623;
+      --white:   #ffffff;
+      --muted:   #c2cfe0;
+      --card-bg: #162233;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: "DM Sans", sans-serif; background: var(--navy); color: var(--white); overflow-x: hidden; }
+    .top-reassurance {
+      background: rgba(13,27,42,.98);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(0,200,160,.2);
+      padding: .4rem 5%;
+      display: flex; align-items: center; justify-content: center;
+      gap: 1.5rem; flex-wrap: nowrap; overflow: hidden;
+      font-size: .76rem; color: rgba(255,255,255,.85);
+      position: fixed; top: 0; left: 0; right: 0; z-index: 101; height: 30px;
+    }
+    .top-reassurance span { display: flex; align-items: center; gap: .35rem; white-space: nowrap; flex-shrink: 0; }
+    .top-reassurance strong { color: var(--teal); }
+    .top-reassurance .sep { width: 1px; height: 12px; background: rgba(0,200,160,.3); flex-shrink: 0; }
+    @media (max-width: 600px) {
+      .top-reassurance { font-size: .7rem; gap: 0; height: 26px; padding: 0 4%; }
+      .top-reassurance .sep { display: none; }
+      .top-reassurance .tr-hide-mobile { display: none; }
+    }
+    nav {
+      position: fixed; top: 30px; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: .75rem 5%;
+      background: rgba(13,27,42,.95); backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(0,200,160,.15);
+    }
+    @media (max-width: 600px) { nav { top: 26px; padding: .6rem 4%; } }
+    .nav-logo { display: flex; align-items: center; gap: .6rem; text-decoration: none; flex-shrink: 0; }
+    .nav-logo img { height: 44px; width: auto; border-radius: 10px; background: white; padding: 3px 5px; object-fit: contain; }
+    @media (max-width: 600px) { .nav-logo img { height: 36px; } .nav-logo { gap: .45rem; } }
+    .nav-logo-info { display: flex; flex-direction: column; gap: .1rem; }
+    .nav-brand-text { font-family: "Plus Jakarta Sans", sans-serif; font-weight: 800; font-size: 1rem; letter-spacing: .04em; color: var(--white); white-space: nowrap; line-height: 1.2; }
+    .nav-brand-text span { color: var(--teal); }
+    .nav-brand-sub { font-size: .65rem; color: var(--teal); font-weight: 500; letter-spacing: .05em; text-transform: uppercase; white-space: nowrap; opacity: .85; }
+    @media (max-width: 600px) { .nav-brand-text { font-size: .8rem; } .nav-brand-sub { display: none; } }
+    .nav-links { list-style: none; display: flex; gap: 1.8rem; align-items: center; }
+    .nav-links a { color: rgba(255,255,255,.85); text-decoration: none; font-size: .94rem; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: var(--teal); }
+    .nav-links a.active { color: var(--teal); font-weight: 700; }
+    .nav-cta { background: var(--teal) !important; color: var(--navy) !important; padding: .5rem 1.3rem; border-radius: 50px; font-weight: 700 !important; transition: background .2s !important; }
+    .nav-cta:hover { background: var(--teal-dk) !important; }
+    .hamburger {
+      display: none; background: none; border: none; cursor: pointer;
+      padding: .5rem; width: 44px; height: 44px;
+      align-items: center; justify-content: center; flex-direction: column;
+      flex-shrink: 0; position: relative; z-index: 102;
+    }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); margin: 3px 0; border-radius: 2px; transition: .3s; }
+    .hamburger.is-open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger.is-open span:nth-child(2) { opacity: 0; }
+    .hamburger.is-open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+    @media (max-width: 1280px) {
+      .nav-links { gap: 1.1rem; }
+      .nav-links a { font-size: .86rem; }
+      .nav-cta { padding: .45rem 1rem; }
+    }
+    @media (max-width: 1080px) {
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex; flex-direction: column;
+        position: absolute; top: 100%; left: 0; right: 0;
+        background: rgba(13,27,42,.98);
+        backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+        padding: 1.5rem 5%; gap: 1rem;
+        border-bottom: 1px solid rgba(0,200,160,.15);
+        max-height: calc(100vh - 100%); overflow-y: auto;
+      }
+      .hamburger { display: flex !important; }
+    }
+    .article-hero { padding: 9.5rem 5% 3rem; position: relative; overflow: hidden; }
+    .article-hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background: radial-gradient(ellipse 60% 60% at 80% 30%, rgba(0,200,160,.1) 0%, transparent 70%);
+    }
+    .article-hero-content { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; }
+    .post-cat {
+      display: inline-block;
+      padding: .28rem .85rem; border-radius: 50px;
+      font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      background: rgba(0,200,160,.15); color: var(--teal); margin-bottom: 1rem;
+    }
+    .article-hero h1 {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: clamp(1.7rem, 3.5vw, 2.6rem);
+      font-weight: 800; line-height: 1.2; letter-spacing: -.02em; margin-bottom: 1rem;
+    }
+    .article-hero h1 .accent { color: var(--teal); }
+    .article-meta { font-size: .82rem; color: var(--muted); }
+    article { padding: 1rem 5% 3rem; }
+    .article-body { max-width: 760px; margin: 0 auto; }
+    .article-body p { color: var(--muted); line-height: 1.8; margin-bottom: 1.2rem; font-size: .98rem; }
+    .article-body p strong { color: var(--white); }
+    .article-body h2 { font-family: "Plus Jakarta Sans", sans-serif; font-size: 1.4rem; font-weight: 800; margin: 2.4rem 0 .9rem; }
+    .article-body h3 { font-family: "Plus Jakarta Sans", sans-serif; font-size: 1.05rem; font-weight: 700; margin: 1.8rem 0 .6rem; color: var(--teal); }
+    .article-body ul, .article-body ol { margin: 0 0 1.2rem 1.3rem; color: var(--muted); line-height: 1.8; }
+    .article-body li { margin-bottom: .45rem; }
+    .article-body li strong { color: var(--white); }
+    code {
+      font-family: "Courier New", monospace; font-size: .88em;
+      background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1);
+      border-radius: 6px; padding: 2px 7px; color: var(--amber); white-space: nowrap;
+    }
+    .formula {
+      background: var(--card-bg); border: 1px solid rgba(0,200,160,.25);
+      border-radius: 14px; padding: 1.1rem 1.4rem; margin: 1.4rem 0; overflow-x: auto;
+    }
+    .formula code { background: none; border: none; color: var(--teal); font-size: .98rem; padding: 0; white-space: pre; font-weight: 700; }
+    .encadre {
+      background: var(--card-bg); border: 1px solid rgba(245,166,35,.35);
+      border-radius: 16px; padding: 1.4rem 1.6rem; margin: 1.8rem 0;
+    }
+    .encadre .encadre-tag { font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--amber); margin-bottom: .5rem; }
+    .encadre p { margin-bottom: 0 !important; }
+    .article-body table { border-collapse: collapse; width: 100%; margin: 1.4rem 0; font-size: .9rem; }
+    .article-body th { background: rgba(0,200,160,.1); color: var(--teal); font-family: "Plus Jakarta Sans", sans-serif; font-weight: 700; text-align: left; }
+    .article-body th, .article-body td { border: 1px solid rgba(255,255,255,.09); padding: .65rem .9rem; color: var(--muted); }
+    .article-body td:first-child { color: var(--white); font-weight: 500; }
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .article-cta {
+      background: var(--card-bg); border: 2px solid rgba(0,200,160,.3);
+      border-radius: 22px; padding: 2.2rem 2rem; margin: 2.8rem 0 1.5rem;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .article-cta::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 80% at 50% 0%, rgba(0,200,160,.08) 0%, transparent 70%); }
+    .article-cta h2 { font-family: "Plus Jakarta Sans", sans-serif; font-size: 1.3rem; font-weight: 800; margin: 0 0 .5rem !important; position: relative; z-index: 1; }
+    .article-cta p { font-size: .9rem; margin-bottom: 1.5rem !important; position: relative; z-index: 1; }
+    .btn-primary {
+      display: inline-block; background: var(--teal); color: var(--navy);
+      padding: .8rem 1.9rem; border-radius: 50px;
+      font-weight: 700; font-size: .95rem; text-decoration: none;
+      transition: background .2s, transform .15s, box-shadow .2s;
+      box-shadow: 0 0 28px rgba(0,200,160,.35);
+      position: relative; z-index: 1; margin: 0 .4rem .6rem;
+    }
+    .btn-primary:hover { background: var(--teal-dk); transform: translateY(-2px); box-shadow: 0 0 44px rgba(0,200,160,.5); }
+    .btn-ghost {
+      display: inline-block; border: 1.5px solid rgba(255,255,255,.25); color: var(--white);
+      padding: .8rem 1.9rem; border-radius: 50px;
+      font-weight: 500; font-size: .95rem; text-decoration: none;
+      transition: border-color .2s, background .2s;
+      position: relative; z-index: 1; margin: 0 .4rem .6rem;
+    }
+    .btn-ghost:hover { border-color: var(--teal); background: rgba(0,200,160,.08); }
+    .back-link { display: inline-block; color: var(--teal); text-decoration: none; font-weight: 700; font-size: .9rem; margin-top: 1rem; }
+    .back-link:hover { text-decoration: underline; }
+    footer { background: #091421; border-top: 1px solid rgba(255,255,255,.06); }
+    .footer-main { display: flex; flex-wrap: wrap; gap: 2rem; padding: 2rem 5%; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,.06); }
+    .footer-logo img { height: 60px; width: auto; background: white; border-radius: 10px; padding: 5px 8px; object-fit: contain; }
+    .footer-info { display: flex; flex-direction: column; gap: .4rem; flex: 1; }
+    .footer-info .name { font-family: "Plus Jakarta Sans", sans-serif; font-weight: 800; font-size: 1rem; }
+    .footer-info .name span { color: var(--teal); }
+    .footer-info small { font-size: .85rem; color: var(--muted); }
+    .footer-legal { padding: 1rem 5%; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .8rem; border-bottom: 1px solid rgba(255,255,255,.04); }
+    .footer-ids { display: flex; gap: .8rem; flex-wrap: wrap; }
+    .footer-ids span { font-size: .8rem; color: var(--muted); background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07); border-radius: 6px; padding: .22rem .65rem; }
+    .footer-ids span strong { color: rgba(255,255,255,.6); }
+    .footer-mention { font-size: .79rem; color: var(--muted); max-width: 500px; line-height: 1.55; font-style: italic; }
+    .footer-copy { padding: .8rem 5%; }
+    .footer-copy p { font-size: .8rem; color: var(--muted); }
+    .footer-copy a { color: var(--teal); text-decoration: none; }
+    img { max-width: 100%; }
+    @media (max-width: 600px) {
+      .article-hero { padding: 8rem 4% 2rem; }
+      article { padding: .5rem 4% 2.5rem; }
+      .footer-main { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+<div class="top-reassurance">
+  <span>🏅 Organisme de formation certifié <strong>Qualiopi</strong></span>
+  <div class="sep tr-hide-mobile"></div>
+  <span class="tr-hide-mobile">🖥️ 100 % distanciel · <strong>Réponse sous 24h</strong></span>
+</div>
+<nav>
+  <a href="../index.html" class="nav-logo">
+    <img src="../images/logo-mentor.png" alt="Mentor Numerik" />
+    <div class="nav-logo-info">
+      <span class="nav-brand-text">MENTOR <span>NUMERIK</span></span>
+      <span class="nav-brand-sub">Organisme de formation · Numérique</span>
+    </div>
+  </a>
+  <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu" aria-controls="nav-links" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="../index.html#formations">Formations</a></li>
+    <li><a href="../index.html#certification">Certification ENI</a></li>
+    <li><a href="../index.html#financement">Financement</a></li>
+    <li><a href="../blog.html" class="active">Blog</a></li>
+    <li><a href="../questionnaire.html">Se préinscrire</a></li>
+    <li><a href="../index.html#contact" class="nav-cta">Nous contacter</a></li>
+  </ul>
+</nav>
+
+<header class="article-hero">
+  <div class="article-hero-bg"></div>
+  <div class="article-hero-content">
+    <span class="post-cat">Astuce Excel · Compétence C5</span>
+    <h1>RECHERCHEV : le guide simple pour croiser vos données dans <span class="accent">Excel</span></h1>
+    <div class="article-meta">11 juillet 2026 · 6 min de lecture · Par Fathi Bendjebbour</div>
+  </div>
+</header>
+
+<article>
+  <div class="article-body">
+
+    <p>Vous avez deux tableaux : d'un côté une liste de commandes avec des références produit, de l'autre le catalogue avec les prix. Comment ramener automatiquement le bon prix en face de chaque commande, sans recopier à la main ? C'est exactement le travail de <strong>RECHERCHEV</strong> — la fonction Excel la plus demandée en entreprise, et un incontournable de l'épreuve de certification ENI RS7536.</p>
+
+    <h2>La syntaxe en une phrase</h2>
+
+    <div class="formula"><code>=RECHERCHEV(valeur_cherchée ; table_matrice ; no_index_col ; [valeur_proche])</code></div>
+
+    <p>Traduction : « Cherche cette valeur dans la première colonne de ce tableau, et renvoie-moi ce qui se trouve dans la colonne n° X de la même ligne. »</p>
+
+    <ul>
+      <li><strong>valeur_cherchée</strong> — ce que vous cherchez (une référence, un nom, un code).</li>
+      <li><strong>table_matrice</strong> — le tableau où chercher. La valeur cherchée doit être dans sa <strong>première colonne</strong>.</li>
+      <li><strong>no_index_col</strong> — le numéro de la colonne à renvoyer (1 = première colonne du tableau sélectionné).</li>
+      <li><strong>valeur_proche</strong> — mettez <code>FAUX</code> (ou <code>0</code>) pour une correspondance exacte. C'est le bon choix dans 95 % des cas.</li>
+    </ul>
+
+    <h2>Exemple concret</h2>
+
+    <p>Votre catalogue se trouve en <code>F2:H50</code> : colonne F la référence, colonne G le libellé, colonne H le prix. En <code>A2</code>, la référence commandée. Pour obtenir le prix :</p>
+
+    <div class="formula"><code>=RECHERCHEV(A2 ; $F$2:$H$50 ; 3 ; FAUX)</code></div>
+
+    <p>Excel cherche la valeur de <code>A2</code> dans la colonne F, et renvoie la valeur de la 3<sup>e</sup> colonne du tableau (le prix, colonne H). Notez les <strong>références absolues</strong> <code>$F$2:$H$50</code> : elles permettent de recopier la formule vers le bas sans que le tableau de recherche ne se décale.</p>
+
+    <h2>Les 3 erreurs qui provoquent #N/A</h2>
+
+    <h3>1. La valeur cherchée n'est pas dans la première colonne</h3>
+    <p>RECHERCHEV ne regarde que la première colonne du tableau sélectionné, et ne sait chercher que vers la droite. Si votre référence est en colonne H et le prix en colonne F, la fonction ne peut pas remonter. Solutions : réorganiser les colonnes, ou passer à <code>RECHERCHEX</code> (voir plus bas).</p>
+
+    <h3>2. Espaces ou formats différents</h3>
+    <p>« REF001 » avec un espace final n'est pas égal à « REF001 ». De même, le nombre <code>1024</code> n'est pas égal au texte <code>"1024"</code>. Nettoyez avec <code>SUPPRESPACE()</code> et vérifiez que les deux colonnes ont le même format.</p>
+
+    <h3>3. Le dernier argument oublié</h3>
+    <p>Sans <code>FAUX</code>, Excel fait une recherche <em>approximative</em> qui suppose un tableau trié — et renvoie des résultats faux en silence. Prenez le réflexe : correspondance exacte par défaut.</p>
+
+    <div class="encadre">
+      <div class="encadre-tag">🏅 Astuce certification ENI</div>
+      <p>À l'épreuve RS7536, les cas pratiques pèsent 7 fois plus lourd que les questions QCM. RECHERCHEV combinée à <code>SI</code> ou <code>SIERREUR</code> revient très souvent dans les sujets de niveau Avancé (score 701–1000). Entraînez-vous avec <code>=SIERREUR(RECHERCHEV(…);"Non trouvé")</code> pour des tableaux propres, sans #N/A affiché.</p>
+    </div>
+
+    <h2>RECHERCHEV ou RECHERCHEX ?</h2>
+
+    <p>Depuis Excel 2021 et Microsoft 365, <strong>RECHERCHEX</strong> (XLOOKUP) corrige les limites historiques de RECHERCHEV :</p>
+
+    <div class="table-scroll">
+      <table>
+        <tr><th></th><th>RECHERCHEV</th><th>RECHERCHEX</th></tr>
+        <tr><td>Chercher vers la gauche</td><td>Non</td><td>Oui</td></tr>
+        <tr><td>Valeur si introuvable</td><td>Via SIERREUR</td><td>Argument intégré</td></tr>
+        <tr><td>Résiste à l'insertion de colonnes</td><td>Non (n° de colonne fixe)</td><td>Oui</td></tr>
+        <tr><td>Correspondance exacte par défaut</td><td>Non</td><td>Oui</td></tr>
+      </table>
+    </div>
+
+    <div class="formula"><code>=RECHERCHEX(A2 ; F2:F50 ; H2:H50 ; "Non trouvé")</code></div>
+
+    <p>Pourquoi apprendre encore RECHERCHEV ? Parce que des millions de classeurs en entreprise l'utilisent, que beaucoup de postes tournent sur des versions antérieures d'Excel, et qu'elle reste au programme de la certification ENI. Maîtrisez les deux : RECHERCHEV pour lire l'existant, RECHERCHEX pour construire le neuf.</p>
+
+    <h2>À retenir</h2>
+
+    <ol>
+      <li>Valeur cherchée toujours dans la <strong>première colonne</strong> du tableau de recherche.</li>
+      <li>Références absolues (<code>$</code>) sur la table pour recopier la formule.</li>
+      <li><code>FAUX</code> en dernier argument, systématiquement.</li>
+      <li><code>SIERREUR</code> pour gérer proprement les valeurs introuvables.</li>
+      <li><code>RECHERCHEX</code> dès que votre version d'Excel le permet.</li>
+    </ol>
+
+    <div class="article-cta">
+      <h2>Maîtrisez RECHERCHEV, les TCD et bien plus</h2>
+      <p>Formation Excel 100 % distanciel · Certification ENI RS7536 incluse · Suivi personnalisé · Bilan gratuit, réponse sous 24h.</p>
+      <a href="../index.html#formations" class="btn-primary">Voir les formations</a>
+      <a href="../questionnaire.html" class="btn-ghost">Se préinscrire</a>
+    </div>
+
+    <a href="../blog.html" class="back-link">← Retour au blog</a>
+
+  </div>
+</article>
+
+<footer>
+  <div class="footer-main">
+    <div class="footer-logo">
+      <img src="../images/logo-mentor.png" alt="Mentor Numerik" />
+    </div>
+    <div class="footer-info">
+      <div class="name">MENTOR <span>NUMERIK</span></div>
+      <small>Organisme de formation bureautique · Certification ENI</small>
+    </div>
+  </div>
+  <div class="footer-legal">
+    <div class="footer-ids">
+      <span>Agrément Qualiopi : <strong>QUA008921</strong></span>
+      <span>SIREN : <strong>790 056 626</strong></span>
+    </div>
+    <p class="footer-mention">Enregistré sous le n° 11 94 1216 294 auprès du préfet de région d'Île-de-France. Cet enregistrement ne vaut pas agrément de l'État.</p>
+  </div>
+  <div class="footer-copy">
+    <p>© 2026 Mentor Numerik · <a href="tel:+33647392284">06 47 39 22 84</a> · contact@mentor-numerik.fr · <a href="../mentions-legales.html">Mentions légales</a></p>
+  </div>
+</footer>
+
+<script>
+  const btn = document.getElementById('hamburger');
+  const menu = document.getElementById('nav-links');
+  function setMenu(open){
+    menu.classList.toggle('open', open);
+    btn.classList.toggle('is-open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  btn.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+</script>
+</body>
+</html>
