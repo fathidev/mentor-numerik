@@ -10,6 +10,14 @@
   <title>RECHERCHEV Excel : le guide simple pour croiser vos données | Mentor Numerik</title>
   <meta name="description" content="Apprenez RECHERCHEV en 5 minutes : syntaxe, exemple concret, les 3 erreurs qui causent #N/A et l'alternative RECHERCHEX. Par Mentor Numerik, centre agréé ENI." />
   <link rel="canonical" href="https://www.mentor-numerik.fr/blog/recherchev-excel-guide.html" />
+  <!-- Open Graph : aperçu du lien sur LinkedIn, Facebook, WhatsApp… -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="RECHERCHEV Excel : le guide simple pour croiser vos données" />
+  <meta property="og:description" content="Syntaxe, exemple concret, les 3 erreurs qui causent #N/A et l'alternative RECHERCHEX. Par Mentor Numerik, centre agréé ENI." />
+  <meta property="og:url" content="https://www.mentor-numerik.fr/blog/recherchev-excel-guide.html" />
+  <meta property="og:image" content="https://www.mentor-numerik.fr/images/logo-mentor.png" />
+  <meta property="og:site_name" content="Mentor Numerik" />
+  <meta name="twitter:card" content="summary" />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     :root {
@@ -170,6 +178,26 @@
     .btn-ghost:hover { border-color: var(--teal); background: rgba(0,200,160,.08); }
     .back-link { display: inline-block; color: var(--teal); text-decoration: none; font-weight: 700; font-size: .9rem; margin-top: 1rem; }
     .back-link:hover { text-decoration: underline; }
+    .share-bar {
+      display: flex; align-items: center; gap: .7rem; flex-wrap: wrap;
+      margin: 2.2rem 0 0; padding: 1.2rem 1.4rem;
+      background: var(--card-bg); border: 1px solid rgba(255,255,255,.08); border-radius: 16px;
+    }
+    .share-label { font-family: "Plus Jakarta Sans", sans-serif; font-size: .85rem; font-weight: 700; color: var(--muted); margin-right: .3rem; }
+    .share-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: .45rem;
+      width: 42px; height: 42px; border-radius: 50%;
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12);
+      color: var(--white); cursor: pointer; text-decoration: none;
+      transition: background .2s, border-color .2s, transform .15s;
+    }
+    .share-btn:hover { border-color: var(--teal); background: rgba(0,200,160,.12); transform: translateY(-2px); }
+    .share-btn svg { width: 18px; height: 18px; fill: currentColor; }
+    .share-copy {
+      width: auto; border-radius: 50px; padding: 0 1.1rem; height: 42px;
+      font-family: "DM Sans", sans-serif; font-size: .82rem; font-weight: 500;
+    }
+    .share-copy.copied { border-color: var(--teal); color: var(--teal); }
     footer { background: #091421; border-top: 1px solid rgba(255,255,255,.06); }
     .footer-main { display: flex; flex-wrap: wrap; gap: 2rem; padding: 2rem 5%; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,.06); }
     .footer-logo img { height: 60px; width: auto; background: white; border-radius: 10px; padding: 5px 8px; object-fit: contain; }
@@ -299,6 +327,27 @@
       <li><code>RECHERCHEX</code> dès que votre version d'Excel le permet.</li>
     </ol>
 
+    <!-- Boutons de partage : aucun réglage à faire, les URLs sont générées automatiquement -->
+    <div class="share-bar">
+      <span class="share-label">Partager cet article :</span>
+      <a class="share-btn" data-share="linkedin" href="#" aria-label="Partager sur LinkedIn" title="LinkedIn">
+        <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.27c-.97 0-1.75-.79-1.75-1.76s.78-1.75 1.75-1.75 1.75.78 1.75 1.75-.78 1.76-1.75 1.76zm13.5 12.27h-3v-5.6c0-3.37-4-3.11-4 0v5.6h-3v-11h3v1.77c1.4-2.59 7-2.78 7 2.48v6.75z"/></svg>
+      </a>
+      <a class="share-btn" data-share="x" href="#" aria-label="Partager sur X (Twitter)" title="X / Twitter">
+        <svg viewBox="0 0 24 24"><path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.66l-5.21-6.82-5.97 6.82h-3.31l7.73-8.84-8.16-10.66h6.83l4.71 6.23 5.46-6.23zm-1.16 17.52h1.83l-11.83-15.64h-1.97l11.97 15.64z"/></svg>
+      </a>
+      <a class="share-btn" data-share="facebook" href="#" aria-label="Partager sur Facebook" title="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M24 12.07c0-6.63-5.37-12-12-12s-12 5.37-12 12c0 5.99 4.39 10.95 10.13 11.85v-8.38h-3.05v-3.47h3.05v-2.64c0-3.01 1.79-4.67 4.53-4.67 1.31 0 2.69.23 2.69.23v2.95h-1.52c-1.49 0-1.96.93-1.96 1.88v2.25h3.33l-.53 3.47h-2.8v8.38c5.74-.9 10.13-5.86 10.13-11.85z"/></svg>
+      </a>
+      <a class="share-btn" data-share="whatsapp" href="#" aria-label="Partager sur WhatsApp" title="WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.89 1.22 3.09.15.2 2.11 3.22 5.1 4.51.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.76-.72 2.01-1.42.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35zm-5.42 7.4h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88a9.83 9.83 0 0 1 7 2.9 9.83 9.83 0 0 1 2.89 7c0 5.45-4.44 9.88-9.9 9.88zm8.42-18.3a11.82 11.82 0 0 0-8.42-3.49c-6.56 0-11.9 5.33-11.9 11.89 0 2.1.55 4.14 1.59 5.94l-1.69 6.16 6.31-1.65a11.9 11.9 0 0 0 5.68 1.44h.01c6.55 0 11.89-5.33 11.89-11.89 0-3.18-1.24-6.16-3.47-8.4z"/></svg>
+      </a>
+      <a class="share-btn" data-share="email" href="#" aria-label="Partager par e-mail" title="E-mail">
+        <svg viewBox="0 0 24 24"><path d="M20 4h-16c-1.1 0-1.99.9-1.99 2l-.01 12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-12c0-1.1-.9-2-2-2zm0 4-8 5-8-5v-2l8 5 8-5v2z"/></svg>
+      </a>
+      <button class="share-btn share-copy" id="share-copy" type="button" aria-label="Copier le lien">🔗 Copier le lien</button>
+    </div>
+
     <div class="article-cta">
       <h2>Maîtrisez RECHERCHEV, les TCD et bien plus</h2>
       <p>Formation Excel 100 % distanciel · Certification ENI RS7536 incluse · Suivi personnalisé · Bilan gratuit, réponse sous 24h.</p>
@@ -343,6 +392,36 @@
   }
   btn.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
   menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+
+  // Partage : les URLs sont générées automatiquement depuis la page courante
+  const pageUrl = encodeURIComponent(location.href);
+  const pageTitle = encodeURIComponent(document.title);
+  const shareUrls = {
+    linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${pageUrl}`,
+    x: `https://twitter.com/intent/tweet?url=${pageUrl}&text=${pageTitle}`,
+    facebook: `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`,
+    whatsapp: `https://wa.me/?text=${pageTitle}%20${pageUrl}`,
+    email: `mailto:?subject=${pageTitle}&body=${pageUrl}`
+  };
+  document.querySelectorAll('[data-share]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const url = shareUrls[a.dataset.share];
+      if (a.dataset.share === 'email') { location.href = url; return; }
+      window.open(url, 'partager', 'width=600,height=520,noopener');
+    });
+  });
+  const copyBtn = document.getElementById('share-copy');
+  copyBtn.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(location.href);
+      copyBtn.textContent = '✓ Lien copié !';
+      copyBtn.classList.add('copied');
+      setTimeout(() => { copyBtn.textContent = '🔗 Copier le lien'; copyBtn.classList.remove('copied'); }, 2000);
+    } catch (err) {
+      prompt('Copiez le lien :', location.href);
+    }
+  });
 </script>
 </body>
 </html>
