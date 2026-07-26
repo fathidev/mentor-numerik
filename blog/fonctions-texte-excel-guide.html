@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fonctions texte Excel : nettoyer et découper vos données | Mentor Numerik</title>
+  <meta name="description" content="GAUCHE, DROITE, STXT, CHERCHE, SUPPRESPACE, SUBSTITUE… Les 10 fonctions texte Excel indispensables, avec un cas pratique de nettoyage de fichier. Par Mentor Numerik, centre agréé ENI." />
+  <link rel="canonical" href="https://www.mentor-numerik.fr/blog/fonctions-texte-excel-guide.html" />
+  <!-- Open Graph : aperçu du lien sur LinkedIn, Facebook, WhatsApp… -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Fonctions texte Excel : nettoyer et découper vos données" />
+  <meta property="og:description" content="Les 10 fonctions texte indispensables, expliquées simplement, avec un cas pratique de nettoyage de fichier. Par Mentor Numerik, centre agréé ENI." />
+  <meta property="og:url" content="https://www.mentor-numerik.fr/blog/fonctions-texte-excel-guide.html" />
+  <meta property="og:image" content="https://www.mentor-numerik.fr/images/logo-mentor.png" />
+  <meta property="og:site_name" content="Mentor Numerik" />
+  <meta name="twitter:card" content="summary" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy:    #0d1b2a;
+      --ink:     #1a2e42;
+      --teal:    #00c8a0;
+      --teal-dk: #009e7e;
+      --amber:   #f5a623;
+      --white:   #ffffff;
+      --muted:   #c2cfe0;
+      --card-bg: #162233;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: "DM Sans", sans-serif; background: var(--navy); color: var(--white); overflow-x: hidden; }
+    .top-reassurance {
+      background: rgba(13,27,42,.98);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(0,200,160,.2);
+      padding: .4rem 5%;
+      display: flex; align-items: center; justify-content: center;
+      gap: 1.5rem; flex-wrap: nowrap; overflow: hidden;
+      font-size: .76rem; color: rgba(255,255,255,.85);
+      position: fixed; top: 0; left: 0; right: 0; z-index: 101; height: 30px;
+    }
+    .top-reassurance span { display: flex; align-items: center; gap: .35rem; white-space: nowrap; flex-shrink: 0; }
+    .top-reassurance strong { color: var(--teal); }
+    .top-reassurance .sep { width: 1px; height: 12px; background: rgba(0,200,160,.3); flex-shrink: 0; }
+    @media (max-width: 600px) {
+      .top-reassurance { font-size: .7rem; gap: 0; height: 26px; padding: 0 4%; }
+      .top-reassurance .sep { display: none; }
+      .top-reassurance .tr-hide-mobile { display: none; }
+    }
+    nav {
+      position: fixed; top: 30px; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: .75rem 5%;
+      background: rgba(13,27,42,.95); backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(0,200,160,.15);
+    }
+    @media (max-width: 600px) { nav { top: 26px; padding: .6rem 4%; } }
+    .nav-logo { display: flex; align-items: center; gap: .6rem; text-decoration: none; flex-shrink: 0; }
+    .nav-logo img { height: 44px; width: auto; border-radius: 10px; background: white; padding: 3px 5px; object-fit: contain; }
+    @media (max-width: 600px) { .nav-logo img { height: 36px; } .nav-logo { gap: .45rem; } }
+    .nav-logo-info { display: flex; flex-direction: column; gap: .1rem; }
+    .nav-brand-text { font-family: "Plus Jakarta Sans", sans-serif; font-weight: 800; font-size: 1rem; letter-spacing: .04em; color: var(--white); white-space: nowrap; line-height: 1.2; }
+    .nav-brand-text span { color: var(--teal); }
+    .nav-brand-sub { font-size: .65rem; color: var(--teal); font-weight: 500; letter-spacing: .05em; text-transform: uppercase; white-space: nowrap; opacity: .85; }
+    @media (max-width: 600px) { .nav-brand-text { font-size: .8rem; } .nav-brand-sub { display: none; } }
+    .nav-links { list-style: none; display: flex; gap: 1.8rem; align-items: center; }
+    .nav-links a { color: rgba(255,255,255,.85); text-decoration: none; font-size: .94rem; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: var(--teal); }
+    .nav-links a.active { color: var(--teal); font-weight: 700; }
+    .nav-cta { background: var(--teal) !important; color: var(--navy) !important; padding: .5rem 1.3rem; border-radius: 50px; font-weight: 700 !important; transition: background .2s !important; }
+    .nav-cta:hover { background: var(--teal-dk) !important; }
+    .hamburger {
+      display: none; background: none; border: none; cursor: pointer;
+      padding: .5rem; width: 44px; height: 44px;
+      align-items: center; justify-content: center; flex-direction: column;
+      flex-shrink: 0; position: relative; z-index: 102;
+    }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); margin: 3px 0; border-radius: 2px; transition: .3s; }
+    .hamburger.is-open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger.is-open span:nth-child(2) { opacity: 0; }
+    .hamburger.is-open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+    @media (max-width: 1280px) {
+      .nav-links { gap: 1.1rem; }
+      .nav-links a { font-size: .86rem; }
+      .nav-cta { padding: .45rem 1rem; }
+    }
+    @media (max-width: 1080px) {
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex; flex-direction: column;
+        position: absolute; top: 100%; left: 0; right: 0;
+        background: rgba(13,27,42,.98);
+        backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+        padding: 1.5rem 5%; gap: 1rem;
+        border-bottom: 1px solid rgba(0,200,160,.15);
+        max-height: calc(100vh - 100%); overflow-y: auto;
+      }
+      .hamburger { display: flex !important; }
+    }
+    .article-hero { padding: 9.5rem 5% 3rem; position: relative; overflow: hidden; }
+    .article-hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background: radial-gradient(ellipse 60% 60% at 80% 30%, rgba(0,200,160,.1) 0%, transparent 70%);
+    }
+    .article-hero-content { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; }
+    .post-cat {
+      display: inline-block;
+      padding: .28rem .85rem; border-radius: 50px;
+      font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      background: rgba(0,200,160,.15); color: var(--teal); margin-bottom: 1rem;
+    }
+    .article-hero h1 {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: clamp(1.7rem, 3.5vw, 2.6rem);
+      font-weight: 800; line-height: 1.2; letter-spacing: -.02em; margin-bottom: 1rem;
+    }
+    .article-hero h1 .accent { color: var(--teal); }
+    .article-meta { font-size: .82rem; color: var(--muted); }
+    article { padding: 1rem 5% 3rem; }
+    .article-body { max-width: 760px; margin: 0 auto; }
+    .article-body p { color: var(--muted); line-height: 1.8; margin-bottom: 1.2rem; font-size: .98rem; }
+    .article-body p strong { color: var(--white); }
+    .article-body h2 { font-family: "Plus Jakarta Sans", sans-serif; font-size: 1.4rem; font-weight: 800; margin: 2.4rem 0 .9rem; }
+    .article-body h3 { font-family: "Plus Jakarta Sans", sans-serif; font-size: 1.05rem; font-weight: 700; margin: 1.8rem 0 .6rem; color: var(--teal); }
+    .article-body ul, .article-body ol { margin: 0 0 1.2rem 1.3rem; color: var(--muted); line-height: 1.8; }
+    .article-body li { margin-bottom: .45rem; }
+    .article-body li strong { color: var(--white); }
+    code {
+      font-family: "Courier New", monospace; font-size: .88em;
+      background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1);
+      border-radius: 6px; padding: 2px 7px; color: var(--amber); white-space: nowrap;
+    }
+    .formula {
+      background: var(--card-bg); border: 1px solid rgba(0,200,160,.25);
+      border-radius: 14px; padding: 1.1rem 1.4rem; margin: 1.4rem 0; overflow-x: auto;
+    }
+    .formula code { background: none; border: none; color: var(--teal); font-size: .98rem; padding: 0; white-space: pre; font-weight: 700; }
+    .encadre {
+      background: var(--card-bg); border: 1px solid rgba(245,166,35,.35);
+      border-radius: 16px; padding: 1.4rem 1.6rem; margin: 1.8rem 0;
+    }
+    .encadre .encadre-tag { font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--amber); margin-bottom: .5rem; }
+    .encadre p { margin-bottom: 0 !important; }
+    .article-body table { border-collapse: collapse; width: 100%; margin: 1.4rem 0; font-size: .9rem; }
+    .article-body th { background: rgba(0,200,160,.1); color: var(--teal); font-family: "Plus Jakarta Sans", sans-serif; font-weight: 700; text-align: left; }
+    .article-body th, .article-body td { border: 1px solid rgba(255,255,255,.09); padding: .65rem .9rem; color: var(--muted); }
+    .article-body td:first-child { color: var(--white); font-weight: 500; }
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .article-cta {
+      background: var(--card-bg); border: 2px solid rgba(0,200,160,.3);
+      border-radius: 22px; padding: 2.2rem 2rem; margin: 2.8rem 0 1.5rem;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .article-cta::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 80% at 50% 0%, rgba(0,200,160,.08) 0%, transparent 70%); }
+    .article-cta h2 { font-family: "Plus Jakarta Sans", sans-serif; font-size: 1.3rem; font-weight: 800; margin: 0 0 .5rem !important; position: relative; z-index: 1; }
+    .article-cta p { font-size: .9rem; margin-bottom: 1.5rem !important; position: relative; z-index: 1; }
+    .btn-primary {
+      display: inline-block; background: var(--teal); color: var(--navy);
+      padding: .8rem 1.9rem; border-radius: 50px;
+      font-weight: 700; font-size: .95rem; text-decoration: none;
+      transition: background .2s, transform .15s, box-shadow .2s;
+      box-shadow: 0 0 28px rgba(0,200,160,.35);
+      position: relative; z-index: 1; margin: 0 .4rem .6rem;
+    }
+    .btn-primary:hover { background: var(--teal-dk); transform: translateY(-2px); box-shadow: 0 0 44px rgba(0,200,160,.5); }
+    .btn-ghost {
+      display: inline-block; border: 1.5px solid rgba(255,255,255,.25); color: var(--white);
+      padding: .8rem 1.9rem; border-radius: 50px;
+      font-weight: 500; font-size: .95rem; text-decoration: none;
+      transition: border-color .2s, background .2s;
+      position: relative; z-index: 1; margin: 0 .4rem .6rem;
+    }
+    .btn-ghost:hover { border-color: var(--teal); background: rgba(0,200,160,.08); }
+    .back-link { display: inline-block; color: var(--teal); text-decoration: none; font-weight: 700; font-size: .9rem; margin-top: 1rem; }
+    .back-link:hover { text-decoration: underline; }
+    .share-bar {
+      display: flex; align-items: center; gap: .7rem; flex-wrap: wrap;
+      margin: 2.2rem 0 0; padding: 1.2rem 1.4rem;
+      background: var(--card-bg); border: 1px solid rgba(255,255,255,.08); border-radius: 16px;
+    }
+    .share-label { font-family: "Plus Jakarta Sans", sans-serif; font-size: .85rem; font-weight: 700; color: var(--muted); margin-right: .3rem; }
+    .share-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: .45rem;
+      width: 42px; height: 42px; border-radius: 50%;
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12);
+      color: var(--white); cursor: pointer; text-decoration: none;
+      transition: background .2s, border-color .2s, transform .15s;
+    }
+    .share-btn:hover { border-color: var(--teal); background: rgba(0,200,160,.12); transform: translateY(-2px); }
+    .share-btn svg { width: 18px; height: 18px; fill: currentColor; }
+    .share-copy {
+      width: auto; border-radius: 50px; padding: 0 1.1rem; height: 42px;
+      font-family: "DM Sans", sans-serif; font-size: .82rem; font-weight: 500;
+    }
+    .share-copy.copied { border-color: var(--teal); color: var(--teal); }
+    footer { background: #091421; border-top: 1px solid rgba(255,255,255,.06); }
+    .footer-main { display: flex; flex-wrap: wrap; gap: 2rem; padding: 2rem 5%; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,.06); }
+    .footer-logo img { height: 60px; width: auto; background: white; border-radius: 10px; padding: 5px 8px; object-fit: contain; }
+    .footer-info { display: flex; flex-direction: column; gap: .4rem; flex: 1; }
+    .footer-info .name { font-family: "Plus Jakarta Sans", sans-serif; font-weight: 800; font-size: 1rem; }
+    .footer-info .name span { color: var(--teal); }
+    .footer-info small { font-size: .85rem; color: var(--muted); }
+    .footer-legal { padding: 1rem 5%; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .8rem; border-bottom: 1px solid rgba(255,255,255,.04); }
+    .footer-ids { display: flex; gap: .8rem; flex-wrap: wrap; }
+    .footer-ids span { font-size: .8rem; color: var(--muted); background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07); border-radius: 6px; padding: .22rem .65rem; }
+    .footer-ids span strong { color: rgba(255,255,255,.6); }
+    .footer-mention { font-size: .79rem; color: var(--muted); max-width: 500px; line-height: 1.55; font-style: italic; }
+    .footer-copy { padding: .8rem 5%; }
+    .footer-copy p { font-size: .8rem; color: var(--muted); }
+    .footer-copy a { color: var(--teal); text-decoration: none; }
+    img { max-width: 100%; }
+    @media (max-width: 600px) {
+      .article-hero { padding: 8rem 4% 2rem; }
+      article { padding: .5rem 4% 2.5rem; }
+      .footer-main { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+<div class="top-reassurance">
+  <span>🏅 Organisme de formation certifié <strong>Qualiopi</strong></span>
+  <div class="sep tr-hide-mobile"></div>
+  <span class="tr-hide-mobile">🖥️ 100 % distanciel · <strong>Réponse sous 24h</strong></span>
+</div>
+<nav>
+  <a href="../index.html" class="nav-logo">
+    <img src="../images/logo-mentor.png" alt="Mentor Numerik" />
+    <div class="nav-logo-info">
+      <span class="nav-brand-text">MENTOR <span>NUMERIK</span></span>
+      <span class="nav-brand-sub">Organisme de formation · Numérique</span>
+    </div>
+  </a>
+  <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu" aria-controls="nav-links" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="../index.html#formations">Formations</a></li>
+    <li><a href="../index.html#certification">Certification ENI</a></li>
+    <li><a href="../index.html#financement">Financement</a></li>
+    <li><a href="../blog.html" class="active">Blog</a></li>
+    <li><a href="../questionnaire.html">Se préinscrire</a></li>
+    <li><a href="../index.html#contact" class="nav-cta">Nous contacter</a></li>
+  </ul>
+</nav>
+
+<header class="article-hero">
+  <div class="article-hero-bg"></div>
+  <div class="article-hero-content">
+    <span class="post-cat">Astuce Excel · Compétence C5</span>
+    <h1>Les fonctions texte : nettoyez et découpez vos données dans <span class="accent">Excel</span></h1>
+    <div class="article-meta">26 juillet 2026 · 6 min de lecture · Par Fathi Bendjebbour</div>
+  </div>
+</header>
+
+<article>
+  <div class="article-body">
+
+    <p>Vous récupérez un export : des noms en MAJUSCULES, des espaces parasites, des adresses e-mail dont il faudrait extraire le prénom, des références collées les unes aux autres. Retaper tout à la main peut prendre une journée. Avec <strong>huit ou neuf fonctions texte</strong>, la même opération prend cinq minutes — et se rejoue automatiquement au prochain export.</p>
+
+    <p>Voici les fonctions qui reviennent le plus souvent en entreprise, et qui figurent au programme de la certification ENI RS7536.</p>
+
+    <h2>1. Découper : GAUCHE, DROITE, STXT et NBCAR</h2>
+
+    <p>Ces quatre fonctions travaillent ensemble. Les trois premières extraient un morceau de texte, la quatrième compte les caractères.</p>
+
+    <div class="formula"><code>=GAUCHE(texte ; nb_caractères)
+=DROITE(texte ; nb_caractères)
+=STXT(texte ; n° du 1er caractère ; nb_caractères)
+=NBCAR(texte)</code></div>
+
+    <ul>
+      <li><strong>GAUCHE</strong> — prend les N premiers caractères. <code>=GAUCHE("FR-2026-0457";2)</code> renvoie <code>FR</code>.</li>
+      <li><strong>DROITE</strong> — prend les N derniers. <code>=DROITE("FR-2026-0457";4)</code> renvoie <code>0457</code>.</li>
+      <li><strong>STXT</strong> — prend N caractères à partir d'une position. <code>=STXT("FR-2026-0457";4;4)</code> renvoie <code>2026</code>.</li>
+      <li><strong>NBCAR</strong> — compte les caractères, espaces compris. Indispensable quand la longueur varie d'une ligne à l'autre.</li>
+    </ul>
+
+    <h2>2. Se repérer : CHERCHE et TROUVE</h2>
+
+    <p>Le vrai problème : vos données n'ont pas toujours la même longueur. « martin.dubois » et « lea.bo » ne se découpent pas au même endroit. Il faut donc <strong>trouver la position</strong> d'un séparateur plutôt que de compter à la main.</p>
+
+    <div class="formula"><code>=CHERCHE(texte_cherché ; texte ; [n° de départ])</code></div>
+
+    <p><code>CHERCHE</code> renvoie la position du premier caractère trouvé. <code>=CHERCHE("@";"lea.bo@societe.fr")</code> renvoie <code>7</code>. Combinée à <code>GAUCHE</code>, <code>DROITE</code> ou <code>STXT</code>, elle rend vos formules universelles.</p>
+
+    <p>Deux différences avec <code>TROUVE</code> : <code>CHERCHE</code> ignore la casse et accepte les caractères génériques (<code>*</code> et <code>?</code>), <code>TROUVE</code> est sensible à la casse. Dans 90 % des cas, <code>CHERCHE</code> suffit.</p>
+
+    <h2>3. Nettoyer : SUPPRESPACE, EPURAGE et SUBSTITUE</h2>
+
+    <p>C'est l'étape que tout le monde saute — et c'est celle qui cause le plus d'erreurs <code>#N/A</code> dans les RECHERCHEV.</p>
+
+    <ul>
+      <li><strong>SUPPRESPACE</strong> — supprime les espaces en début et fin de chaîne, et réduit les espaces multiples à un seul. <code>=SUPPRESPACE("  Marie   Durand ")</code> renvoie <code>Marie Durand</code>.</li>
+      <li><strong>EPURAGE</strong> — retire les caractères non imprimables (sauts de ligne, codes parasites) issus des exports de logiciels métier.</li>
+      <li><strong>SUBSTITUE</strong> — remplace un texte par un autre, partout dans la cellule.</li>
+    </ul>
+
+    <div class="formula"><code>=SUBSTITUE(A2 ; "." ; " ")</code></div>
+
+    <p>Astuce : <code>SUBSTITUE</code> remplace <em>toutes</em> les occurrences par défaut. Ajoutez un 4<sup>e</sup> argument pour n'en viser qu'une : <code>=SUBSTITUE(A2;"-";"/";2)</code> ne modifie que le deuxième tiret. Ne confondez pas avec <code>REMPLACER</code>, qui travaille sur une <strong>position</strong> et non sur un contenu.</p>
+
+    <h2>4. Harmoniser la casse : MAJUSCULE, MINUSCULE, NOMPROPRE</h2>
+
+    <p>Trois fonctions, un seul argument, aucun piège :</p>
+
+    <div class="table-scroll">
+      <table>
+        <tr><th>Formule</th><th>Résultat</th><th>Usage typique</th></tr>
+        <tr><td>=MAJUSCULE("dupont")</td><td>DUPONT</td><td>Codes, références</td></tr>
+        <tr><td>=MINUSCULE("Contact@X.FR")</td><td>contact@x.fr</td><td>Adresses e-mail</td></tr>
+        <tr><td>=NOMPROPRE("marie DURAND")</td><td>Marie Durand</td><td>Noms, villes, publipostage</td></tr>
+      </table>
+    </div>
+
+    <h2>5. Assembler : &amp; et JOINDRE.TEXTE</h2>
+
+    <p>L'opérateur <code>&amp;</code> reste le plus rapide pour concaténer :</p>
+
+    <div class="formula"><code>=B2&amp;" "&amp;C2</code></div>
+
+    <p>Pour assembler une plage entière avec un séparateur, <code>JOINDRE.TEXTE</code> (Excel 2019 et suivants) est bien plus confortable :</p>
+
+    <div class="formula"><code>=JOINDRE.TEXTE(" ; " ; VRAI ; A2:A10)</code></div>
+
+    <p>Le deuxième argument <code>VRAI</code> ignore les cellules vides — ce qui évite les séparateurs qui se suivent. <code>CONCAT</code> fait la même chose sans séparateur.</p>
+
+    <h2>Cas pratique : découper une liste d'adresses e-mail</h2>
+
+    <p>En colonne A, un export brut : <code>  Martin.Dubois@societe-alpha.fr  </code>. Objectif : trois colonnes propres — prénom, nom, domaine.</p>
+
+    <p><strong>Étape 1 — nettoyer et normaliser</strong> (en <code>B2</code>) :</p>
+
+    <div class="formula"><code>=MINUSCULE(SUPPRESPACE(A2))</code></div>
+
+    <p><strong>Étape 2 — le prénom</strong> : tout ce qui précède le premier point.</p>
+
+    <div class="formula"><code>=NOMPROPRE(GAUCHE(B2 ; CHERCHE(".";B2)-1))</code></div>
+
+    <p><strong>Étape 3 — le nom</strong> : entre le point et l'arobase. On part du caractère suivant le point, sur une longueur égale à la distance entre les deux séparateurs.</p>
+
+    <div class="formula"><code>=NOMPROPRE(STXT(B2 ; CHERCHE(".";B2)+1 ; CHERCHE("@";B2)-CHERCHE(".";B2)-1))</code></div>
+
+    <p><strong>Étape 4 — le domaine</strong> : tout ce qui suit l'arobase.</p>
+
+    <div class="formula"><code>=DROITE(B2 ; NBCAR(B2)-CHERCHE("@";B2))</code></div>
+
+    <p>Résultat : <strong>Martin</strong> · <strong>Dubois</strong> · <strong>societe-alpha.fr</strong>. Recopiez vers le bas, et les 3 000 lignes sont traitées. Le <code>-1</code> et le <code>+1</code> sont la seule vraie difficulté : le premier exclut le séparateur, le second le saute.</p>
+
+    <div class="encadre">
+      <div class="encadre-tag">🏅 Astuce certification ENI</div>
+      <p>À l'épreuve RS7536, les fonctions texte apparaissent surtout en cas pratique, rarement seules : on vous demande de nettoyer une colonne <em>puis</em> de faire un RECHERCHEV dessus. Enveloppez systématiquement vos clés de recherche dans <code>SUPPRESPACE()</code> — c'est le réflexe qui fait gagner des points sur les questions à fort coefficient (score 701–1000).</p>
+    </div>
+
+    <h2>Et sur Microsoft 365 ?</h2>
+
+    <p>Les versions récentes ajoutent trois fonctions qui remplacent avantageusement les combinaisons ci-dessus :</p>
+
+    <div class="table-scroll">
+      <table>
+        <tr><th>Fonction</th><th>Ce qu'elle fait</th><th>Remplace</th></tr>
+        <tr><td>TEXTE.AVANT</td><td>Renvoie ce qui précède un délimiteur</td><td>GAUCHE + CHERCHE</td></tr>
+        <tr><td>TEXTE.APRES</td><td>Renvoie ce qui suit un délimiteur</td><td>DROITE + NBCAR + CHERCHE</td></tr>
+        <tr><td>DIVISERTEXTE</td><td>Éclate une cellule en plusieurs colonnes</td><td>Assistant « Convertir »</td></tr>
+      </table>
+    </div>
+
+    <div class="formula"><code>=TEXTE.AVANT(B2 ; ".")</code></div>
+
+    <p>Une ligne au lieu de trois fonctions imbriquées. Mais comme pour RECHERCHEV et RECHERCHEX : beaucoup de postes en entreprise tournent encore sur Excel 2016 ou 2019, et la certification ENI porte sur les fonctions classiques. Apprenez les deux.</p>
+
+    <h2>À retenir</h2>
+
+    <ol>
+      <li><strong>Nettoyez d'abord</strong> : <code>SUPPRESPACE</code> avant tout croisement de données.</li>
+      <li>Ne comptez jamais les caractères à la main — utilisez <code>CHERCHE</code> pour localiser le séparateur.</li>
+      <li><code>STXT</code> + <code>CHERCHE</code> couvre à eux deux la majorité des besoins de découpe.</li>
+      <li><code>SUBSTITUE</code> remplace un <em>contenu</em>, <code>REMPLACER</code> remplace une <em>position</em>.</li>
+      <li>Sur Microsoft 365, testez <code>TEXTE.AVANT</code> et <code>TEXTE.APRES</code> : formules deux fois plus courtes.</li>
+    </ol>
+
+    <!-- Boutons de partage : aucun réglage à faire, les URLs sont générées automatiquement -->
+    <div class="share-bar">
+      <span class="share-label">Partager cet article :</span>
+      <a class="share-btn" data-share="linkedin" href="#" aria-label="Partager sur LinkedIn" title="LinkedIn">
+        <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.27c-.97 0-1.75-.79-1.75-1.76s.78-1.75 1.75-1.75 1.75.78 1.75 1.75-.78 1.76-1.75 1.76zm13.5 12.27h-3v-5.6c0-3.37-4-3.11-4 0v5.6h-3v-11h3v1.77c1.4-2.59 7-2.78 7 2.48v6.75z"/></svg>
+      </a>
+      <a class="share-btn" data-share="x" href="#" aria-label="Partager sur X (Twitter)" title="X / Twitter">
+        <svg viewBox="0 0 24 24"><path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.66l-5.21-6.82-5.97 6.82h-3.31l7.73-8.84-8.16-10.66h6.83l4.71 6.23 5.46-6.23zm-1.16 17.52h1.83l-11.83-15.64h-1.97l11.97 15.64z"/></svg>
+      </a>
+      <a class="share-btn" data-share="facebook" href="#" aria-label="Partager sur Facebook" title="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M24 12.07c0-6.63-5.37-12-12-12s-12 5.37-12 12c0 5.99 4.39 10.95 10.13 11.85v-8.38h-3.05v-3.47h3.05v-2.64c0-3.01 1.79-4.67 4.53-4.67 1.31 0 2.69.23 2.69.23v2.95h-1.52c-1.49 0-1.96.93-1.96 1.88v2.25h3.33l-.53 3.47h-2.8v8.38c5.74-.9 10.13-5.86 10.13-11.85z"/></svg>
+      </a>
+      <a class="share-btn" data-share="whatsapp" href="#" aria-label="Partager sur WhatsApp" title="WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.89 1.22 3.09.15.2 2.11 3.22 5.1 4.51.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.76-.72 2.01-1.42.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35zm-5.42 7.4h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88a9.83 9.83 0 0 1 7 2.9 9.83 9.83 0 0 1 2.89 7c0 5.45-4.44 9.88-9.9 9.88zm8.42-18.3a11.82 11.82 0 0 0-8.42-3.49c-6.56 0-11.9 5.33-11.9 11.89 0 2.1.55 4.14 1.59 5.94l-1.69 6.16 6.31-1.65a11.9 11.9 0 0 0 5.68 1.44h.01c6.55 0 11.89-5.33 11.89-11.89 0-3.18-1.24-6.16-3.47-8.4z"/></svg>
+      </a>
+      <a class="share-btn" data-share="email" href="#" aria-label="Partager par e-mail" title="E-mail">
+        <svg viewBox="0 0 24 24"><path d="M20 4h-16c-1.1 0-1.99.9-1.99 2l-.01 12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-12c0-1.1-.9-2-2-2zm0 4-8 5-8-5v-2l8 5 8-5v2z"/></svg>
+      </a>
+      <button class="share-btn share-copy" id="share-copy" type="button" aria-label="Copier le lien">🔗 Copier le lien</button>
+    </div>
+
+    <div class="article-cta">
+      <h2>Maîtrisez les fonctions texte, RECHERCHEV et les TCD</h2>
+      <p>Formation Excel 100 % distanciel · Certification ENI RS7536 incluse · Suivi personnalisé · Bilan gratuit, réponse sous 24h.</p>
+      <a href="../index.html#formations" class="btn-primary">Voir les formations</a>
+      <a href="../questionnaire.html" class="btn-ghost">Se préinscrire</a>
+    </div>
+
+    <a href="../blog.html" class="back-link">← Retour au blog</a>
+
+  </div>
+</article>
+
+<footer>
+  <div class="footer-main">
+    <div class="footer-logo">
+      <img src="../images/logo-mentor.png" alt="Mentor Numerik" />
+    </div>
+    <div class="footer-info">
+      <div class="name">MENTOR <span>NUMERIK</span></div>
+      <small>Organisme de formation bureautique · Certification ENI</small>
+    </div>
+  </div>
+  <div class="footer-legal">
+    <div class="footer-ids">
+      <span>Agrément Qualiopi : <strong>QUA008921</strong></span>
+      <span>SIREN : <strong>790 056 626</strong></span>
+    </div>
+    <p class="footer-mention">Enregistré sous le n° 11 94 1216 294 auprès du préfet de région d'Île-de-France. Cet enregistrement ne vaut pas agrément de l'État.</p>
+  </div>
+  <div class="footer-copy">
+    <p>© 2026 Mentor Numerik · <a href="tel:+33647392284">06 47 39 22 84</a> · contact@mentor-numerik.fr · <a href="../mentions-legales.html">Mentions légales</a></p>
+  </div>
+</footer>
+
+<script>
+  const btn = document.getElementById('hamburger');
+  const menu = document.getElementById('nav-links');
+  function setMenu(open){
+    menu.classList.toggle('open', open);
+    btn.classList.toggle('is-open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  btn.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+
+  // Partage : les URLs sont générées automatiquement depuis la page courante
+  const pageUrl = encodeURIComponent(location.href);
+  const pageTitle = encodeURIComponent(document.title);
+  const shareUrls = {
+    linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${pageUrl}`,
+    x: `https://twitter.com/intent/tweet?url=${pageUrl}&text=${pageTitle}`,
+    facebook: `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`,
+    whatsapp: `https://wa.me/?text=${pageTitle}%20${pageUrl}`,
+    email: `mailto:?subject=${pageTitle}&body=${pageUrl}`
+  };
+  document.querySelectorAll('[data-share]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const url = shareUrls[a.dataset.share];
+      if (a.dataset.share === 'email') { location.href = url; return; }
+      window.open(url, 'partager', 'width=600,height=520,noopener');
+    });
+  });
+  const copyBtn = document.getElementById('share-copy');
+  copyBtn.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(location.href);
+      copyBtn.textContent = '✓ Lien copié !';
+      copyBtn.classList.add('copied');
+      setTimeout(() => { copyBtn.textContent = '🔗 Copier le lien'; copyBtn.classList.remove('copied'); }, 2000);
+    } catch (err) {
+      prompt('Copiez le lien :', location.href);
+    }
+  });
+</script>
+</body>
+</html>
