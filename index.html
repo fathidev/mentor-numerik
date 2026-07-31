@@ -655,27 +655,37 @@
     }
     /* ===== Bandeau « Dernier article du blog » ===== */
     .last-post {
-      display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
-      margin: 0 5% 3.5rem; padding: 1rem 1.5rem;
+      display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap;
+      margin: 0 5% 3.5rem; padding: 1.1rem 1.6rem;
       background: var(--card-bg, #162233);
       border: 1px solid rgba(0,200,160,.28);
       border-left: 4px solid var(--teal);
       border-radius: 16px;
       text-decoration: none; color: var(--white);
-      transition: transform .2s, border-color .2s, box-shadow .2s;
+      position: relative; overflow: hidden;
+      opacity: 0; transform: translateY(24px);
+      transition: opacity .7s ease, transform .7s ease, border-color .25s, box-shadow .25s;
     }
-    .last-post:hover { transform: translateY(-3px); border-color: rgba(0,200,160,.6); box-shadow: 0 14px 40px rgba(0,0,0,.35); }
-    .last-post-badge {
-      flex-shrink: 0; padding: .3rem .8rem; border-radius: 50px;
-      font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-      background: var(--teal); color: var(--navy);
-      animation: lastPostPulse 2.4s infinite;
+    .last-post.is-visible { opacity: 1; transform: translateY(0); }
+    .last-post:hover { border-color: rgba(0,200,160,.6); box-shadow: 0 16px 44px rgba(0,0,0,.4); }
+    .last-post.is-visible:hover { transform: translateY(-3px); }
+    /* reflet qui balaie le bandeau */
+    .last-post::after {
+      content: ""; position: absolute; top: 0; left: -60%; width: 40%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0,200,160,.10), transparent);
+      animation: lastPostSweep 5s infinite; pointer-events: none;
     }
-    @keyframes lastPostPulse {
-      0%   { box-shadow: 0 0 0 0 rgba(0,200,160,.5); }
-      70%  { box-shadow: 0 0 0 12px rgba(0,200,160,0); }
-      100% { box-shadow: 0 0 0 0 rgba(0,200,160,0); }
+    @keyframes lastPostSweep { 0% { left: -60%; } 55% { left: 120%; } 100% { left: 120%; } }
+    /* cellule Excel animée */
+    .last-post-cell {
+      flex-shrink: 0; width: 172px; padding: .55rem .7rem;
+      background: var(--navy); border: 1px solid rgba(0,200,160,.35); border-radius: 10px;
+      font-family: "Courier New", monospace; font-size: .95rem; font-weight: 700; color: var(--teal);
+      white-space: nowrap; overflow: hidden;
     }
+    .last-post-cell .res { color: var(--white); }
+    .last-post-cur { display: inline-block; width: 8px; background: var(--teal); color: transparent; animation: lastPostBlink 1s steps(1) infinite; }
+    @keyframes lastPostBlink { 50% { opacity: 0; } }
     .last-post-text { flex: 1; min-width: 220px; }
     .last-post-title {
       display: block; font-family: "Plus Jakarta Sans", sans-serif;
@@ -684,6 +694,11 @@
     }
     .last-post:hover .last-post-title { color: var(--teal); }
     .last-post-meta { display: block; font-size: .8rem; color: var(--muted); }
+    .last-post-new {
+      display: inline-block; margin-right: .45rem; padding: .08rem .55rem;
+      border-radius: 50px; font-size: .66rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      background: var(--teal); color: var(--navy);
+    }
     .last-post-video {
       display: inline-block; margin-left: .4rem; padding: .05rem .45rem;
       border-radius: 50px; font-size: .7rem; font-weight: 700;
@@ -691,10 +706,16 @@
       border: 1px solid rgba(245,166,35,.3);
     }
     .last-post-cta { flex-shrink: 0; font-size: .88rem; font-weight: 700; color: var(--teal); white-space: nowrap; }
+    .last-post-cta i { display: inline-block; font-style: normal; animation: lastPostNudge 1.8s infinite; }
+    @keyframes lastPostNudge { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(5px); } }
     .last-post:hover .last-post-cta { text-decoration: underline; }
     @media (prefers-reduced-motion: reduce) {
-      .last-post-badge { animation: none; }
-      .last-post:hover { transform: none; }
+      .last-post { opacity: 1; transform: none; transition: none; }
+      .last-post::after, .last-post-cur, .last-post-cta i { animation: none; }
+      .last-post.is-visible:hover { transform: none; }
+    }
+    @media (max-width: 860px) {
+      .last-post-cell { display: none; }
     }
     @media (max-width: 600px) {
       .last-post { margin: 0 4% 2.5rem; padding: 1rem 1.1rem; gap: .7rem; }
@@ -772,16 +793,17 @@
     </div>
   </div>
 </section>
-<!-- ▼▼ DERNIER ARTICLE DU BLOG — 3 lignes à modifier à chaque nouvel article ▼▼ -->
-<a class="last-post" href="blog/calculer-progression-pourcentage-excel.html">
-  <span class="last-post-badge">Nouvel article</span>
+<!-- ▼▼ DERNIER ARTICLE DU BLOG — 4 lignes à modifier à chaque nouvel article ▼▼ -->
+<a class="last-post" id="last-post" href="blog/calculer-progression-pourcentage-excel.html"
+   data-formule="=(B2-A2)/A2" data-resultat="15 %">
+  <span class="last-post-cell" id="last-post-cell">&nbsp;</span>
   <span class="last-post-text">
     <span class="last-post-title">Calculer une progression en pourcentage dans Excel : la formule à retenir</span>
-    <span class="last-post-meta">Astuce Excel · 5 min de lecture · 31 juillet 2026<span class="last-post-video">▶ Vidéo</span></span>
+    <span class="last-post-meta"><span class="last-post-new">Nouvel article</span>Astuce Excel · 5 min de lecture · 31 juillet 2026<span class="last-post-video">▶ Vidéo</span></span>
   </span>
-  <span class="last-post-cta">Lire l'article →</span>
+  <span class="last-post-cta">Lire l'article <i>→</i></span>
 </a>
-<!-- ▲▲ Fin du bandeau — modifier : le href, le titre, la ligne meta ▲▲ -->
+<!-- ▲▲ À modifier : le href, data-formule, data-resultat, le titre et la ligne meta ▲▲ -->
 
 <section class="suivi-section" id="suivi">
   <div class="section-tag">Notre différence</div>
@@ -1314,6 +1336,44 @@
       sbtn.textContent = 'Envoyer ma demande';
     }
   });
+
+  /* ===== Bandeau dernier article : apparition au scroll + cellule Excel animée ===== */
+  (function () {
+    const banner = document.getElementById('last-post');
+    if (!banner) return;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reduce || !('IntersectionObserver' in window)) {
+      banner.classList.add('is-visible');
+    } else {
+      new IntersectionObserver((entries, obs) => {
+        entries.forEach(en => {
+          if (en.isIntersecting) { en.target.classList.add('is-visible'); obs.unobserve(en.target); }
+        });
+      }, { threshold: .25 }).observe(banner);
+    }
+
+    const cell = document.getElementById('last-post-cell');
+    if (!cell) return;
+    const formule = banner.dataset.formule || '=(B2-A2)/A2';
+    const resultat = banner.dataset.resultat || '15 %';
+    if (reduce) { cell.textContent = formule; return; }
+
+    let i = 0, etape = 'saisie';
+    (function boucle() {
+      if (etape === 'saisie') {
+        i++;
+        cell.innerHTML = formule.slice(0, i).replace(/</g, '&lt;') + '<span class="last-post-cur">.</span>';
+        if (i >= formule.length) { etape = 'calcul'; setTimeout(boucle, 750); return; }
+        setTimeout(boucle, 110);
+      } else if (etape === 'calcul') {
+        cell.innerHTML = '<span class="res">' + resultat + '</span>';
+        etape = 'pause'; setTimeout(boucle, 2400);
+      } else {
+        i = 0; etape = 'saisie'; setTimeout(boucle, 350);
+      }
+    })();
+  })();
 </script>
 </body>
 </html>
