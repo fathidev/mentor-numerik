@@ -1,0 +1,12 @@
+# robots.txt — www.mentor-numerik.fr
+# À déposer à la racine du site : https://www.mentor-numerik.fr/robots.txt
+
+User-agent: *
+Allow: /
+
+# Pages sans valeur pour la recherche
+Disallow: /merci.html
+Disallow: /*?utm_
+Disallow: /*?fbclid
+
+Sitemap: https://www.mentor-numerik.fr/sitemap.xml
