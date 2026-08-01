@@ -363,7 +363,7 @@
     }
     .financement { background: var(--ink); }
     .fin-intro { color: var(--muted); line-height: 1.75; max-width: 640px; margin-bottom: 3rem; }
-    .fin-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
+    .fin-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5rem; margin-bottom: 3rem; align-items: stretch; }
     .fin-card { background: var(--card-bg); border: 1px solid rgba(255,255,255,.07); border-radius: 20px; padding: 1.8rem; position: relative; overflow: hidden; transition: transform .2s, border-color .25s, box-shadow .2s; }
     .fin-card:hover { transform: translateY(-5px); border-color: rgba(0,200,160,.35); box-shadow: 0 16px 50px rgba(0,0,0,.35); }
     .fin-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
@@ -371,7 +371,47 @@
     .fin-card.opco::before { background: linear-gradient(90deg,#f5a623,#d4891b); }
     .fin-card.ent::before  { background: linear-gradient(90deg,#457b9d,#1d3557); }
     .fin-card.perso::before{ background: linear-gradient(90deg,#9b5de5,#7b2d8b); }
+    .fin-card.cpf { grid-column: 1 / -1; border-color: rgba(0,200,160,.45); box-shadow: 0 14px 48px rgba(0,200,160,.12); padding: 2rem 2.2rem; }
+    .cpf-head { display: flex; align-items: center; gap: 1.1rem; margin-bottom: 1.3rem; padding-right: 8rem; }
+    .cpf-head .fin-card-icon { margin-bottom: 0; flex-shrink: 0; }
+    .cpf-head .fin-tag { margin-bottom: .4rem; }
+    .cpf-head h3 { margin-bottom: 0; }
+    .cpf-body { display: grid; grid-template-columns: 1.05fr .95fr; gap: 1.2rem 2.4rem; align-items: start; }
+    .cpf-body > div { display: flex; flex-direction: column; align-items: flex-start; gap: .5rem; }
+    .cpf-body .cpf-rac { width: 100%; }
+    .cpf-body .fin-link { margin-top: .4rem; }
+    .cpf-body .cpf-rac { margin: 0; }
+    .fin-card.cpf::before { background: linear-gradient(90deg, var(--teal), var(--amber)); height: 4px; }
+    .fin-card.cpf .fin-tag { background: rgba(0,200,160,.15); color: var(--teal); }
+    .fin-badge-new { position: absolute; top: 1.1rem; right: 1.1rem; background: var(--amber); color: var(--navy); padding: .25rem .8rem; border-radius: 50px; font-size: .66rem; font-weight: 800; text-transform: uppercase; letter-spacing: .07em; }
+    .cpf-rac { display: flex; align-items: center; gap: 1.3rem; flex-wrap: wrap; background: rgba(0,200,160,.08); border: 1px solid rgba(0,200,160,.25); border-radius: 14px; padding: 1.1rem 1.3rem; margin: 1.2rem 0 .9rem; }
+    .cpf-rac-amount { font-family: "Plus Jakarta Sans", sans-serif; font-size: 1.9rem; font-weight: 800; color: var(--teal); line-height: 1; white-space: nowrap; }
+    .cpf-rac-amount small { display: block; font-size: .62rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); margin-top: .35rem; }
+    .cpf-rac-txt { font-size: .88rem; color: var(--muted); line-height: 1.65; flex: 1; min-width: 220px; }
+    .cpf-rac-txt strong { color: var(--white); }
+    .cpf-note { font-size: .76rem; color: var(--muted); line-height: 1.6; font-style: italic; margin-top: .2rem; }
+    .cpf-pill { background: rgba(0,200,160,.15); border: 1px solid rgba(0,200,160,.45); color: var(--teal); padding: .28rem .85rem; border-radius: 50px; font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; display: inline-flex; align-items: center; gap: .35rem; margin-bottom: 1rem; margin-left: .4rem; }
+    @media (max-width: 1240px) { .fin-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 900px) { .cpf-body { grid-template-columns: 1fr; gap: 1.1rem; } }
+    @media (max-width: 720px) {
+      .fin-steps { flex-direction: column; gap: 1.1rem; }
+      .fin-step { padding-right: 0; width: 100%; }
+      .fin-step:not(:last-child)::after { display: none; }
+      .fin-steps-box { padding: 1.6rem 1.4rem; }
+    }
+    @media (max-width: 640px) {
+      .fin-grid { grid-template-columns: 1fr; gap: 1.1rem; }
+      .fin-card { padding: 1.5rem 1.3rem; }
+      .fin-card.cpf { padding: 1.6rem 1.3rem; }
+      .cpf-head { flex-direction: column; align-items: flex-start; gap: .7rem; padding-right: 0; }
+      .cpf-rac { flex-direction: column; align-items: flex-start; gap: .8rem; }
+      .fin-badge-new { position: static; display: inline-block; margin-bottom: .9rem; }
+      .fin-card-icon svg { width: 38px; height: 38px; }
+      .cpf-rac-amount { font-size: 1.7rem; }
+    }
     .fin-card-icon { font-size: 2.2rem; margin-bottom: 1rem; }
+    .fin-card-icon svg { display: block; width: 46px; height: 46px; stroke: var(--teal); fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+    .cpf-pill svg, .cpf-ico { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; vertical-align: -.18em; flex-shrink: 0; }
     .fin-card h3 { font-family: "Plus Jakarta Sans", sans-serif; font-size: 1.05rem; font-weight: 800; margin-bottom: .35rem; }
     .fin-card .fin-tag { display: inline-block; font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: .2rem .7rem; border-radius: 50px; margin-bottom: .8rem; }
     .fin-card.ft   .fin-tag { background: rgba(230,57,70,.15); color: #e63946; }
@@ -771,6 +811,8 @@
 <div class="top-reassurance">
   <span>🏅 Organisme de formation certifié <strong>Qualiopi</strong></span>
   <div class="sep tr-hide-mobile"></div>
+  <span><svg class="cpf-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2.5"/><line x1="2" y1="10" x2="22" y2="10"/><line x1="6" y1="15" x2="10" y2="15"/></svg> Formations <strong>éligibles CPF</strong></span>
+  <div class="sep tr-hide-mobile"></div>
   <span class="tr-hide-mobile">🖥️ 100 % distanciel · <strong>Réponse sous 24h</strong></span>
 </div>
 <nav>
@@ -789,7 +831,7 @@
     <li><a href="#formations">Formations</a></li>
     <li><a href="#certification">Certification ENI</a></li>
     <li><a href="#process">Déroulé</a></li>
-    <li><a href="#financement">Financement</a></li>
+    <li><a href="#financement">Financement &amp; CPF</a></li>
     <li><a href="blog.html">Blog</a></li>
     <li><a href="questionnaire.html">Se préinscrire</a></li>
     <li><a href="#contact" class="nav-cta js-open-contact">Nous contacter</a></li>
@@ -802,10 +844,11 @@
     <div class="hero-of-badges">
       <span class="of-badge of-badge-qualiopi">🏅 OF certifié Qualiopi</span>
       <span class="of-badge of-badge-formation">🎓 Formation professionnelle</span>
+      <span class="of-badge of-badge-qualiopi"><svg class="cpf-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2.5"/><line x1="2" y1="10" x2="22" y2="10"/><line x1="6" y1="15" x2="10" y2="15"/></svg> Éligible CPF</span>
     </div>
     <div class="badge">Organisme certifié Qualiopi</div>
     <h1>Maîtrisez <span class="accent">Excel</span><br/>et décrochez votre<br/><span class="amber">certification ENI</span></h1>
-    <p class="hero-sub">Formations dispensées par un <strong style="color:var(--teal)">organisme de formation certifié Qualiopi</strong>, 100 % distanciel. Préparation à la certification ENI <strong style="color:var(--teal)">RS7536</strong> · Suivi 100 % personnalisé · Tarifs <strong style="color:var(--teal)">à partir de 900 €</strong> · Certification <strong style="color:var(--amber)">incluse</strong>.</p>
+    <p class="hero-sub">Formations dispensées par un <strong style="color:var(--teal)">organisme de formation certifié Qualiopi</strong>, 100 % distanciel. Préparation à la certification ENI <strong style="color:var(--teal)">RS7536</strong> · Suivi 100 % personnalisé · Tarifs <strong style="color:var(--teal)">à partir de 900 €</strong> · Certification <strong style="color:var(--amber)">incluse</strong> · <strong style="color:var(--amber)">Éligible CPF</strong> : reste à charge de <strong style="color:var(--teal)">150 €</strong> seulement.</p>
     <div class="hero-actions">
       <a href="#formations" class="btn-primary">Voir les formations</a>
       <a href="#contact" class="btn-ghost js-open-contact">Bilan gratuit →</a>
@@ -900,6 +943,7 @@
       <div style="margin-bottom:1rem">
         <span class="card-level level-op">Opérationnel · Score 500–700</span>
         <span class="certif-pill">Certif. incluse</span>
+        <span class="cpf-pill"><svg class="cpf-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2.5"/><line x1="2" y1="10" x2="22" y2="10"/><line x1="6" y1="15" x2="10" y2="15"/></svg> Éligible CPF</span>
       </div>
       <h3 class="card-title">Excel Opérationnel<br/><span style="font-size:.75em;color:var(--muted);font-weight:500">Certification ENI RS7536</span></h3>
       <p class="card-desc">Créer, mettre en forme, imprimer et partager des tableaux et graphiques. Compétences C1 à C4 + introduction C5 et C6.</p>
@@ -918,6 +962,7 @@
           <div style="font-size:.72rem;color:var(--muted);margin-bottom:.2rem">À partir de</div>
           <div class="card-price">900 € <small>TTC/pers.</small></div>
           <div style="font-size:.72rem;color:var(--muted);margin-top:.25rem">Individuel : 1 500 € · Groupe : dès 900 €</div>
+          <div style="font-size:.72rem;color:var(--teal);margin-top:.3rem;font-weight:700"><svg class="cpf-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2.5"/><line x1="2" y1="10" x2="22" y2="10"/><line x1="6" y1="15" x2="10" y2="15"/></svg> Via CPF : reste à charge 150 €</div>
         </div>
         <a href="questionnaire.html" class="btn-card">Se préinscrire</a>
       </div>
@@ -927,6 +972,7 @@
       <div style="margin-bottom:1rem">
         <span class="card-level level-adv">Avancé · Score 701–1000</span>
         <span class="certif-pill">Certif. incluse</span>
+        <span class="cpf-pill"><svg class="cpf-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2.5"/><line x1="2" y1="10" x2="22" y2="10"/><line x1="6" y1="15" x2="10" y2="15"/></svg> Éligible CPF</span>
       </div>
       <h3 class="card-title">Excel Avancé<br/><span style="font-size:.75em;color:var(--muted);font-weight:500">Certification ENI RS7536</span></h3>
       <p class="card-desc">Analyse de données complexes, reporting dynamique et tableaux de bord. Compétences C1 à C6 complètes.</p>
@@ -945,6 +991,7 @@
           <div style="font-size:.72rem;color:var(--muted);margin-bottom:.2rem">À partir de</div>
           <div class="card-price">1 350 € <small>TTC/pers.</small></div>
           <div style="font-size:.72rem;color:var(--muted);margin-top:.25rem">Individuel : 2 200 € · Groupe : dès 1 350 €</div>
+          <div style="font-size:.72rem;color:var(--teal);margin-top:.3rem;font-weight:700"><svg class="cpf-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2.5"/><line x1="2" y1="10" x2="22" y2="10"/><line x1="6" y1="15" x2="10" y2="15"/></svg> Via CPF : reste à charge 150 €</div>
         </div>
         <a href="questionnaire.html" class="btn-card">Se préinscrire</a>
       </div>
@@ -954,6 +1001,7 @@
     <div class="tarif-head">
       <div class="section-tag" style="margin-bottom:.3rem">Grille tarifaire</div>
       <h3>Tarifs TTC – Certification ENI RS7536 incluse</h3>
+      <p style="font-size:.82rem;color:var(--muted);margin-top:.5rem;line-height:1.6">Ces tarifs sont ceux payés par le financeur. <strong style="color:var(--teal)">En financement CPF, votre reste à charge personnel est de 150 €</strong>, quel que soit le tarif de la formation.</p>
     </div>
     <div style="overflow-x:auto">
       <table>
@@ -985,6 +1033,7 @@
     <div class="tarif-foot">
       <span>🏅 Certification ENI RS7536 incluse</span>
       <span>👥 Tarifs par participant · 2 à 6 apprenants max.</span>
+      <span><svg class="cpf-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2.5"/><line x1="2" y1="10" x2="22" y2="10"/><line x1="6" y1="15" x2="10" y2="15"/></svg> Éligible CPF · reste à charge <strong style="color:var(--teal)">150 €</strong></span>
     </div>
   </div>
 </section>
@@ -1147,7 +1196,7 @@
     <div class="why-card reveal"><div class="why-icon">🎯</div><h4>100% orienté certification</h4><p>Chaque module prépare directement l'examen ENI RS7536. Pas de contenu superflu.</p></div>
     <div class="why-card reveal" style="transition-delay:.1s"><div class="why-icon">👨‍🏫</div><h4>Fathi Bendjebbour – Votre formateur</h4><p>+20 ans d'expérience dans le numérique · Diplômé technicien informatique, développeur web, certifié ENI · Chef de projet & formateur en entreprise depuis plus de 10 ans · Note Google <strong style="color:var(--amber)">5/5 ⭐</strong></p></div>
     <div class="why-card reveal" style="transition-delay:.2s"><div class="why-icon">🤝</div><h4>Suivi 100 % personnalisé</h4><p>Quiz de positionnement, messagerie directe, adaptation du programme, préparation intensive.</p></div>
-    <div class="why-card reveal" style="transition-delay:.05s"><div class="why-icon">💰</div><h4>Plusieurs solutions de financement</h4><p>OPCO, France Travail, plan de formation entreprise ou financement personnel : nous vous aidons à identifier la solution la plus adaptée à votre situation.</p></div>
+    <div class="why-card reveal" style="transition-delay:.05s"><div class="why-icon">💰</div><h4>Éligible CPF · reste à charge 150 €</h4><p>CPF, OPCO, France Travail, plan de formation entreprise ou financement personnel : nous vous aidons à identifier la solution la plus adaptée. En CPF, votre reste à charge se limite à 150 €.</p></div>
     <div class="why-card reveal" style="transition-delay:.15s"><div class="why-icon">🏡</div><h4>100 % distanciel synchrone</h4><p>Google Meet, supports PDF + vidéos, Google Classroom, signatures Edusign.</p></div>
     <div class="why-card reveal" style="transition-delay:.25s"><div class="why-icon">♿</div><h4>Accessibilité & handicap</h4><p>Entretien préalable pour adapter le parcours. Réseau AGEFIPH, MDPH, CAP EMPLOI, APAJH.</p></div>
   </div>
@@ -1166,9 +1215,34 @@
 </section>
 <section class="financement" id="financement">
   <div class="section-tag">Financer votre formation</div>
-  <h2 class="section-title">Plusieurs solutions pour<br/>financer votre formation</h2>
-  <p class="fin-intro">Nos formations sont certifiées Qualiopi, ce qui vous ouvre l'accès à de nombreux dispositifs de financement publics et privés. Dans la plupart des cas, vous pouvez vous former <strong>sans avancer un seul euro</strong>.</p>
+  <h2 class="section-title">Formations éligibles au <span style="color:var(--teal)">CPF</span><br/>et à de nombreux dispositifs</h2>
+  <p class="fin-intro">Nos formations sont certifiées Qualiopi et préparent à la certification ENI RS7536, inscrite au Répertoire Spécifique de France Compétences : elles sont donc <strong>éligibles au CPF</strong> et accessibles via de nombreux dispositifs publics et privés. Dans la plupart des cas, votre reste à charge se limite à <strong>150 €</strong> — voire <strong>0 €</strong>.</p>
   <div class="fin-grid">
+    <div class="fin-card cpf reveal">
+      <span class="fin-badge-new">★ Nouveauté</span>
+      <div class="cpf-head">
+        <div class="fin-card-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2.5"/><line x1="2" y1="10" x2="22" y2="10"/><line x1="6" y1="15" x2="10" y2="15"/></svg>
+        </div>
+        <div>
+          <span class="fin-tag">Tout public · Nouveau</span>
+          <h3>CPF — Compte Personnel de Formation</h3>
+        </div>
+      </div>
+      <div class="cpf-body">
+        <div>
+        <p>Nos formations Excel préparant à la <strong>certification ENI RS7536</strong> sont désormais <strong>éligibles au CPF</strong> et disponibles sur le catalogue officiel <strong>Mon Compte Formation</strong>. Vous mobilisez directement les droits acquis au titre de votre activité professionnelle, sans passer par votre employeur et sans avancer le montant de la formation.</p>
+        <a href="https://www.moncompteformation.gouv.fr" target="_blank" rel="noopener" class="fin-link">Consulter mes droits CPF sur moncompteformation.gouv.fr →</a>
+        </div>
+        <div>
+      <div class="cpf-rac">
+        <div class="cpf-rac-amount">150 €<small>Votre reste à charge</small></div>
+        <div class="cpf-rac-txt">C’est le <strong>seul montant qui reste à votre charge</strong> lorsque vos droits CPF couvrent le tarif de la formation. Il s’agit de la <strong>participation obligatoire</strong> fixée par l’État, portée à 150 € depuis le 2 avril 2026 (décret n° 2026-234), identique quel que soit le prix de la formation.</div>
+      </div>
+      <p class="cpf-note">Reste à charge de <strong style="color:var(--teal);font-style:normal">0 €</strong> pour les demandeurs d’emploi inscrits à France Travail et pour les salariés dont l’employeur abonde la formation. Si votre solde CPF ne couvre pas la totalité du tarif, le complément peut être pris en charge par votre employeur, votre OPCO, ou échelonné — nous consulter.</p>
+        </div>
+      </div>
+    </div>
     <div class="fin-card ft reveal" style="transition-delay:.07s">
       <div class="fin-card-icon">🏛️</div>
       <span class="fin-tag">Demandeur d'emploi</span>
@@ -1201,7 +1275,7 @@
     <h3>🗺️ Comment procéder pas à pas</h3>
     <div class="fin-steps">
       <div class="fin-step"><div class="fin-step-num">1</div><div class="fin-step-text"><strong>Bilan gratuit</strong><span>Contactez-nous pour identifier votre niveau et le bon parcours.</span></div></div>
-      <div class="fin-step"><div class="fin-step-num">2</div><div class="fin-step-text"><strong>Choix du financement</strong><span>On vous aide à identifier le dispositif le plus adapté.</span></div></div>
+      <div class="fin-step"><div class="fin-step-num">2</div><div class="fin-step-text"><strong>Choix du financement</strong><span>CPF, OPCO, France Travail… on vous aide à identifier le dispositif le plus adapté et à chiffrer votre reste à charge.</span></div></div>
       <div class="fin-step"><div class="fin-step-num">3</div><div class="fin-step-text"><strong>Dossier & accord</strong><span>Nous vous accompagnons dans les démarches administratives.</span></div></div>
       <div class="fin-step"><div class="fin-step-num">4</div><div class="fin-step-text"><strong>Formation & certification</strong><span>Une fois l'accord obtenu, la formation démarre sous 14 jours.</span></div></div>
     </div>
@@ -1293,6 +1367,7 @@
         <select id="m-sujet">
           <option>Excel Opérationnel – Certification ENI RS7536</option>
           <option>Excel Avancé – Certification ENI RS7536</option>
+          <option>Financement CPF (éligibilité, reste à charge)</option>
           <option>Financement (OPCO, France Travail, entreprise…)</option>
           <option>Accessibilité / situation de handicap</option>
           <option>Formation pour mon entreprise / mes salariés</option>
