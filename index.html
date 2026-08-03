@@ -780,6 +780,65 @@
     .fin-card p { font-size: .92rem; color: var(--muted); line-height: 1.65; }
     .fin-card .fin-link { display: inline-flex; align-items: center; gap: .35rem; margin-top: .9rem; font-size: .8rem; font-weight: 700; color: var(--teal); text-decoration: none; transition: opacity .2s; }
     .fin-card .fin-link:hover { opacity: .75; }
+    /* ---- Bloc explicatif financement CPF ---- */
+    .cpf-explain { background: var(--card-bg); border: 1px solid rgba(0,200,160,.2); border-radius: 20px; padding: 2.4rem 2.5rem; margin-bottom: 2rem; }
+    .cpf-explain-head { max-width: 780px; margin-bottom: 2rem; }
+    .cpf-explain-tag { display: inline-block; font-size: .68rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--navy); background: var(--teal); border-radius: 999px; padding: .3rem .8rem; margin-bottom: .9rem; }
+    .cpf-explain-head h3 { font-family: "Plus Jakarta Sans", sans-serif; font-size: 1.45rem; font-weight: 800; color: var(--white); line-height: 1.3; margin-bottom: .7rem; }
+    .cpf-explain-head p { font-size: .93rem; color: var(--muted); line-height: 1.75; }
+
+    .cpf-steps3 { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1.2rem; margin-bottom: 2.2rem; }
+    .cpf-s3 { position: relative; background: rgba(255,255,255,.025); border: 1px solid rgba(255,255,255,.08); border-radius: 16px; padding: 1.6rem 1.5rem 1.4rem; }
+    .cpf-s3-num { position: absolute; top: -12px; left: 1.5rem; width: 26px; height: 26px; border-radius: 50%; background: var(--teal); color: var(--navy); font-weight: 800; font-size: .8rem; display: flex; align-items: center; justify-content: center; }
+    .cpf-s3-amount { font-family: "Plus Jakarta Sans", sans-serif; font-size: 1.75rem; font-weight: 800; color: var(--teal); line-height: 1; margin: .4rem 0 .6rem; }
+    .cpf-s3-amount.amber { color: var(--amber); font-size: 1.4rem; }
+    .cpf-s3 h4 { font-size: .95rem; font-weight: 700; color: var(--white); margin-bottom: .6rem; }
+    .cpf-s3 p { font-size: .84rem; color: var(--muted); line-height: 1.65; margin-bottom: .6rem; }
+    .cpf-s3 p strong { color: var(--white); }
+    .cpf-s3-note { border-top: 1px solid rgba(255,255,255,.08); padding-top: .6rem; margin-bottom: 0 !important; font-size: .8rem !important; }
+    .cpf-s3-note strong { color: var(--teal) !important; }
+
+    .cpf-tab-title { font-family: "Plus Jakarta Sans", sans-serif; font-size: 1.05rem; font-weight: 800; color: var(--white); margin-bottom: .3rem; }
+    .cpf-tab-sub { font-size: .82rem; color: var(--muted); line-height: 1.6; margin-bottom: 1.1rem; }
+    .cpf-tab-wrap { overflow-x: auto; border-radius: 14px; border: 1px solid rgba(255,255,255,.09); }
+    table.cpf-tab { width: 100%; border-collapse: collapse; font-size: .84rem; min-width: 680px; }
+    table.cpf-tab th { background: rgba(0,200,160,.09); color: var(--white); font-weight: 700; font-size: .72rem; letter-spacing: .04em; text-transform: uppercase; padding: .85rem .8rem; text-align: center; border-bottom: 1px solid rgba(255,255,255,.09); }
+    table.cpf-tab th:first-child { text-align: left; }
+    table.cpf-tab th small { display: block; font-weight: 500; text-transform: none; letter-spacing: 0; color: var(--muted); font-size: .68rem; margin-top: .15rem; }
+    table.cpf-tab td { padding: .8rem; text-align: center; color: var(--muted); border-bottom: 1px solid rgba(255,255,255,.06); }
+    table.cpf-tab td:first-child { text-align: left; color: var(--white); font-weight: 600; }
+    table.cpf-tab td:first-child span { display: block; font-weight: 400; font-size: .76rem; color: var(--muted); }
+    table.cpf-tab tr:last-child td { border-bottom: none; }
+    table.cpf-tab tbody tr.alt { background: rgba(255,255,255,.022); }
+    .rac-ok { color: var(--teal); font-weight: 800; }
+    .rac-plus { color: var(--amber); font-weight: 800; }
+    .rac-zero { color: var(--teal); font-weight: 800; }
+    .cpf-tab-legend { font-size: .76rem; color: var(--muted); line-height: 1.65; margin-top: .9rem; }
+    .cpf-tab-legend strong { color: var(--white); }
+
+    .cpf-adv { margin-top: 2.2rem; background: rgba(245,166,35,.05); border: 1px solid rgba(245,166,35,.28); border-radius: 18px; padding: 1.9rem 1.8rem; }
+    .cpf-adv-head { display: flex; align-items: baseline; gap: .8rem; flex-wrap: wrap; margin-bottom: .5rem; }
+    .cpf-adv-head h4 { font-family: "Plus Jakarta Sans", sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--white); }
+    .cpf-adv-pill { font-size: .68rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--navy); background: var(--amber); border-radius: 999px; padding: .25rem .7rem; }
+    .cpf-adv > p { font-size: .87rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.3rem; }
+    .cpf-adv > p strong { color: var(--white); }
+    .cpf-opts { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1rem; }
+    .cpf-opt { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.08); border-radius: 13px; padding: 1.1rem 1.2rem; }
+    .cpf-opt.best { border-color: rgba(0,200,160,.42); background: rgba(0,200,160,.06); }
+    .cpf-opt-top { display: flex; align-items: center; gap: .55rem; margin-bottom: .5rem; flex-wrap: wrap; }
+    .cpf-opt-top h5 { font-size: .9rem; font-weight: 700; color: var(--white); }
+    .cpf-opt-tag { font-size: .62rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; padding: .18rem .5rem; border-radius: 999px; background: rgba(0,200,160,.15); color: var(--teal); }
+    .cpf-opt p { font-size: .81rem; color: var(--muted); line-height: 1.65; }
+    .cpf-opt dl { margin-top: .6rem; font-size: .78rem; line-height: 1.6; }
+    .cpf-opt dl div { display: flex; gap: .5rem; padding: .22rem 0; border-top: 1px solid rgba(255,255,255,.06); }
+    .cpf-opt dt { color: var(--muted); min-width: 74px; flex-shrink: 0; }
+    .cpf-opt dd { color: var(--white); font-weight: 600; }
+    .cpf-rncp { margin-top: 1.3rem; font-size: .8rem; color: var(--muted); line-height: 1.7; border-top: 1px solid rgba(255,255,255,.09); padding-top: 1rem; }
+    .cpf-rncp strong { color: var(--white); }
+
+    @media (max-width: 1000px) { .cpf-steps3 { grid-template-columns: 1fr; } .cpf-opts { grid-template-columns: 1fr; } }
+    @media (max-width: 700px) { .cpf-explain { padding: 1.7rem 1.3rem; } .cpf-adv { padding: 1.4rem 1.2rem; } .cpf-explain-head h3 { font-size: 1.2rem; } }
+
     .fin-steps-box { background: var(--card-bg); border: 1px solid rgba(0,200,160,.2); border-radius: 20px; padding: 2rem 2.5rem; }
     .fin-steps-box h3 { font-family: "Plus Jakarta Sans", sans-serif; font-size: 1.1rem; font-weight: 800; margin-bottom: 1.4rem; color: var(--teal); }
     .fin-steps { display: flex; gap: 0; flex-wrap: wrap; }
@@ -1683,7 +1742,7 @@
         <div class="cpf-rac-amount">1 500 €<small>Plafond de prise en charge CPF</small></div>
         <div class="cpf-rac-txt">Depuis le <strong>décret n° 2026-127 du 24 février 2026</strong>, le CPF prend en charge <strong>au maximum 1 500 €</strong> pour une formation sanctionnée par une certification du <strong>Répertoire Spécifique</strong> — c’est le cas de la certification ENI RS7536. Ce plafond s’applique <strong>quel que soit votre solde</strong> : avec 2 600 € de droits, vous en mobilisez 1 500, le reste demeure sur votre compte. S’y ajoute la <strong>participation obligatoire de 150 €</strong> (décret n° 2026-234 du 30 mars 2026).</div>
       </div>
-      <p class="cpf-note">Concrètement : les parcours à <strong style="color:var(--teal);font-style:normal">1 500 € ou moins</strong> sont couverts en totalité, votre reste à charge se limite aux 150 € — et tombe à <strong style="color:var(--teal);font-style:normal">0 €</strong> pour les demandeurs d’emploi inscrits à France Travail comme pour les salariés dont l’employeur abonde le dossier. Au-delà de 1 500 €, la différence est à votre charge, mais elle peut être cofinancée par votre employeur, votre OPCO, une <strong style="font-style:normal">AIF France Travail</strong>, ou échelonnée — nous consulter. À noter : les <strong style="font-style:normal">titres enregistrés au RNCP</strong> ne sont pas concernés par ce plafond.</p>
+      <p class="cpf-note">Concrètement : les parcours à <strong style="color:var(--teal);font-style:normal">1 500 € ou moins</strong> sont couverts en totalité, votre reste à charge se limite aux 150 € — et tombe à <strong style="color:var(--teal);font-style:normal">0 €</strong> pour les demandeurs d’emploi inscrits à France Travail comme pour les salariés dont l’employeur abonde le dossier. Au-delà de 1 500 €, la différence se finance autrement — <strong style="font-style:normal">les cinq solutions sont détaillées juste en dessous</strong>.</p>
         </div>
       </div>
     </div>
@@ -1715,6 +1774,159 @@
       <a href="#contact" class="fin-link js-open-contact">Nous contacter →</a>
     </div>
   </div>
+  <div class="cpf-explain reveal">
+    <div class="cpf-explain-head">
+      <span class="cpf-explain-tag">Nouveau cadre réglementaire 2026</span>
+      <h3>Ce que le CPF finance réellement, et ce qui reste à votre charge</h3>
+      <p>Deux décrets publiés en 2026 encadrent désormais le financement CPF. Nous préférons vous les expliquer clairement avant toute inscription plutôt que vous laisser découvrir un montant au moment de payer. Voici la règle, puis le calcul exact pour chaque parcours.</p>
+    </div>
+
+    <div class="cpf-steps3">
+      <div class="cpf-s3">
+        <div class="cpf-s3-num">1</div>
+        <div class="cpf-s3-amount">1 500 €</div>
+        <h4>Le plafond de prise en charge</h4>
+        <p>Le <strong>décret n° 2026-127 du 24 février 2026</strong> limite à 1 500 € la prise en charge CPF des formations sanctionnées par une certification du <strong>Répertoire Spécifique</strong> — ce qui inclut la certification ENI RS7536.</p>
+        <p class="cpf-s3-note">Ce plafond s’applique <strong>quel que soit votre solde</strong> : avec 2 600 € de droits, vous en mobilisez 1 500 €, le reliquat reste acquis sur votre compte pour une formation ultérieure.</p>
+      </div>
+      <div class="cpf-s3">
+        <div class="cpf-s3-num">2</div>
+        <div class="cpf-s3-amount">150 €</div>
+        <h4>La participation obligatoire</h4>
+        <p>Le <strong>décret n° 2026-234 du 30 mars 2026</strong> fixe à 150 € la participation due par le titulaire du compte. Elle se règle au moment de l’inscription sur Mon Compte Formation.</p>
+        <p class="cpf-s3-note">Elle tombe à <strong>0 €</strong> pour les demandeurs d’emploi inscrits à France Travail et pour les salariés dont l’employeur abonde le dossier.</p>
+      </div>
+      <div class="cpf-s3">
+        <div class="cpf-s3-num">3</div>
+        <div class="cpf-s3-amount amber">Le complément</div>
+        <h4>Uniquement au-delà de 1 500 €</h4>
+        <p>Si le tarif dépasse le plafond, la différence se finance autrement. Chez nous, cela ne concerne que <strong>l’Excel Avancé en individuel et en groupe de 2–3</strong>. Tous les autres parcours sont intégralement couverts.</p>
+        <p class="cpf-s3-note">Cinq solutions existent pour ce complément — <strong>détaillées ci-dessous</strong>. Nous montons le dossier avec vous.</p>
+      </div>
+    </div>
+
+    <div class="cpf-tab-title">Ce que vous payez réellement, parcours par parcours</div>
+    <p class="cpf-tab-sub">Montants calculés pour un solde CPF d’au moins 1 500 €. Tarifs nets de TVA, certification ENI RS7536 incluse.</p>
+    <div class="cpf-tab-wrap">
+      <table class="cpf-tab">
+        <thead>
+          <tr>
+            <th>Parcours &amp; format</th>
+            <th>Tarif</th>
+            <th>Pris en charge<br/><small>par le CPF</small></th>
+            <th>Reste à financer<br/><small>hors participation</small></th>
+            <th>Votre reste à charge<br/><small>salarié</small></th>
+            <th>Votre reste à charge<br/><small>demandeur d’emploi</small></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Excel Opérationnel <span>Individuel · 14 h</span></td>
+            <td>1 500 €</td><td>1 500 €</td><td>—</td>
+            <td class="rac-ok">150 €</td><td class="rac-zero">0 €</td>
+          </tr>
+          <tr class="alt">
+            <td>Excel Opérationnel <span>Groupe 2–3 · 14 h</span></td>
+            <td>1 100 €</td><td>1 100 €</td><td>—</td>
+            <td class="rac-ok">150 €</td><td class="rac-zero">0 €</td>
+          </tr>
+          <tr>
+            <td>Excel Opérationnel <span>Groupe 4–6 · 14 h</span></td>
+            <td>900 €</td><td>900 €</td><td>—</td>
+            <td class="rac-ok">150 €</td><td class="rac-zero">0 €</td>
+          </tr>
+          <tr class="alt">
+            <td>Excel Avancé <span>Groupe 4–6 · 21 h</span></td>
+            <td>1 350 €</td><td>1 350 €</td><td>—</td>
+            <td class="rac-ok">150 €</td><td class="rac-zero">0 €</td>
+          </tr>
+          <tr>
+            <td>Excel Avancé <span>Groupe 2–3 · 21 h</span></td>
+            <td>1 700 €</td><td>1 500 €</td><td class="rac-plus">200 €</td>
+            <td class="rac-plus">350 €</td><td class="rac-plus">200 €</td>
+          </tr>
+          <tr class="alt">
+            <td>Excel Avancé <span>Individuel · 21 h</span></td>
+            <td>2 200 €</td><td>1 500 €</td><td class="rac-plus">700 €</td>
+            <td class="rac-plus">850 €</td><td class="rac-plus">700 €</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="cpf-tab-legend"><strong>Comment lire ce tableau.</strong> La colonne « reste à charge » additionne le complément éventuel au-delà de 1 500 € et la participation obligatoire de 150 €, dont les demandeurs d’emploi sont exonérés. <strong>Quatre de nos six formules ne vous coûtent que 150 €</strong> — et rien du tout si vous êtes inscrit à France Travail. Si votre solde CPF est inférieur à 1 500 €, la prise en charge se limite à ce solde : communiquez-le nous et nous recalculons votre montant exact.</p>
+
+    <div class="cpf-adv">
+      <div class="cpf-adv-head">
+        <h4>Excel Avancé en individuel : les 5 façons de compléter</h4>
+        <span class="cpf-adv-pill">700 € à financer</span>
+      </div>
+      <p>C’est le seul parcours où le complément est significatif. Il n’a rien d’un obstacle : dans la grande majorité des dossiers que nous montons, il est couvert par l’un des dispositifs ci-dessous — <strong>souvent sans avance de votre part</strong>. En groupe de 2–3, le raisonnement est identique sur 200 €.</p>
+      <div class="cpf-opts">
+
+        <div class="cpf-opt best">
+          <div class="cpf-opt-top"><h5>1. Basculer en groupe 4–6</h5><span class="cpf-opt-tag">le plus simple</span></div>
+          <p>Le même parcours de 21 h et la même certification, en petit groupe de 4 à 6 personnes, à 1 350 € — soit sous le plafond. Aucun complément, votre reste à charge retombe à 150 €, voire 0 €.</p>
+          <dl>
+            <div><dt>Pour qui</dt><dd>Tout le monde</dd></div>
+            <div><dt>Délai</dt><dd>Selon l’ouverture de session</dd></div>
+            <div><dt>À faire</dt><dd>Nous le demander au bilan</dd></div>
+          </dl>
+        </div>
+
+        <div class="cpf-opt">
+          <div class="cpf-opt-top"><h5>2. Abondement employeur</h5><span class="cpf-opt-tag">salariés</span></div>
+          <p>Votre employeur verse le complément directement sur votre dossier Mon Compte Formation. Avantage double : le complément est couvert <em>et</em> la participation de 150 € tombe à 0 €.</p>
+          <dl>
+            <div><dt>Pour qui</dt><dd>Salariés en poste</dd></div>
+            <div><dt>Condition</dt><dd>Accord écrit ou accord collectif</dd></div>
+            <div><dt>Nous</dt><dd>Devis pour votre DRH</dd></div>
+          </dl>
+        </div>
+
+        <div class="cpf-opt">
+          <div class="cpf-opt-top"><h5>3. OPCO / plan de développement</h5><span class="cpf-opt-tag">entreprises</span></div>
+          <p>Votre entreprise sollicite son opérateur de compétences au titre du plan de développement des compétences. Le complément — voire la totalité du parcours — est pris en charge hors CPF.</p>
+          <dl>
+            <div><dt>Pour qui</dt><dd>Salariés, via l’employeur</dd></div>
+            <div><dt>Délai</dt><dd>Variable selon l’OPCO</dd></div>
+            <div><dt>Nous</dt><dd>Devis et programme détaillé</dd></div>
+          </dl>
+        </div>
+
+        <div class="cpf-opt">
+          <div class="cpf-opt-top"><h5>4. AIF France Travail</h5><span class="cpf-opt-tag">demandeurs d’emploi</span></div>
+          <p>L’Aide Individuelle à la Formation finance tout ou partie du reste à charge, en complément du CPF. Elle s’obtient auprès de votre conseiller référent, selon la cohérence de la formation avec votre projet.</p>
+          <dl>
+            <div><dt>Pour qui</dt><dd>Inscrits à France Travail</dd></div>
+            <div><dt>Délai</dt><dd>3 à 4 semaines avant le début</dd></div>
+            <div><dt>Attention</dt><dd>Jamais rétroactive</dd></div>
+          </dl>
+        </div>
+
+        <div class="cpf-opt">
+          <div class="cpf-opt-top"><h5>5. Paiement échelonné</h5><span class="cpf-opt-tag">tout public</span></div>
+          <p>Si aucun cofinancement n’aboutit, le complément peut être réglé sur vos fonds propres, avec un échelonnement que nous convenons ensemble avant le démarrage.</p>
+          <dl>
+            <div><dt>Pour qui</dt><dd>Tout public</dd></div>
+            <div><dt>Modalité</dt><dd>Échéancier sans frais</dd></div>
+            <div><dt>Nous</dt><dd>Confirmation écrite</dd></div>
+          </dl>
+        </div>
+
+        <div class="cpf-opt">
+          <div class="cpf-opt-top"><h5>Et si rien ne convient ?</h5></div>
+          <p>Nous ne vous inscrivons jamais sans que le montage financier soit bouclé. Le <strong>bilan gratuit</strong> sert exactement à cela : identifier votre dispositif, chiffrer votre reste à charge et vous le confirmer <strong>par écrit</strong> avant tout engagement.</p>
+          <dl>
+            <div><dt>Coût</dt><dd>Gratuit, sans engagement</dd></div>
+            <div><dt>Durée</dt><dd>15 à 30 minutes</dd></div>
+          </dl>
+        </div>
+
+      </div>
+      <p class="cpf-rncp"><strong>Bon à savoir.</strong> Le plafond de 1 500 € ne vise que les certifications du Répertoire Spécifique. Les <strong>titres enregistrés au RNCP</strong> et la <strong>VAE</strong> restent finançables à hauteur de votre solde disponible : si votre projet est une reconversion vers un métier identifié, parlons-en au bilan — un parcours diplômant peut mobiliser davantage de droits qu’une certification bureautique.</p>
+    </div>
+  </div>
+
   <div class="fin-steps-box reveal">
     <h3>🗺️ Comment procéder pas à pas</h3>
     <div class="fin-steps">
