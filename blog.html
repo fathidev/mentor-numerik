@@ -7,9 +7,73 @@
   <link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blog – Astuces Excel & Certification ENI | Mentor Numerik</title>
-  <meta name="description" content="Astuces Excel, préparation à la certification ENI RS7536 et conseils pour financer votre formation. Le blog de Mentor Numerik, organisme de formation certifié Qualiopi." />
+  <title>Blog Excel : astuces, formules et certification ENI | Mentor Numerik</title>
+  <meta name="description" content="Astuces Excel gratuites : raccourcis clavier, RECHERCHEV, tableaux croisés dynamiques, formats de données. Préparation à la certification ENI RS7536 par Mentor Numerik, organisme certifié Qualiopi." />
+  <meta name="keywords" content="astuces Excel, blog Excel, raccourcis clavier Excel, RECHERCHEV, tableau croisé dynamique, certification ENI RS7536, formation Excel CPF" />
+  <meta name="author" content="Fathi Bendjebbour – Mentor Numerik" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
   <link rel="canonical" href="https://www.mentor-numerik.fr/blog.html" />
+  <!-- Open Graph : aperçu du lien sur LinkedIn, Facebook, WhatsApp… -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:title" content="Blog Excel : astuces, formules et certification ENI" />
+  <meta property="og:description" content="Raccourcis clavier, RECHERCHEV, tableaux croisés dynamiques, formats de données : des articles courts et concrets pour progresser sur Excel." />
+  <meta property="og:url" content="https://www.mentor-numerik.fr/blog.html" />
+  <meta property="og:image" content="https://www.mentor-numerik.fr/images/logo-mentor.png" />
+  <meta property="og:site_name" content="Mentor Numerik" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Blog Excel : astuces, formules et certification ENI" />
+  <meta name="twitter:description" content="Raccourcis clavier, RECHERCHEV, tableaux croisés dynamiques : des articles courts et concrets pour progresser sur Excel." />
+
+  <!-- Données structurées : blog, liste d'articles et fil d'Ariane -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://www.mentor-numerik.fr/#organization",
+        "name": "Mentor Numerik",
+        "url": "https://www.mentor-numerik.fr/",
+        "logo": "https://www.mentor-numerik.fr/images/logo-mentor.png",
+        "email": "contact@mentor-numerik.fr",
+        "telephone": "+33647392284",
+        "description": "Organisme de formation Excel à distance, certifié Qualiopi et centre agréé Éditions ENI. Formations éligibles au CPF préparant la certification ENI RS7536.",
+        "address": { "@type": "PostalAddress", "addressCountry": "FR" }
+      },
+      {
+        "@type": "Blog",
+        "@id": "https://www.mentor-numerik.fr/blog.html#blog",
+        "name": "Le blog Excel de Mentor Numerik",
+        "description": "Astuces Excel, préparation à la certification ENI RS7536 et conseils de financement de formation.",
+        "url": "https://www.mentor-numerik.fr/blog.html",
+        "inLanguage": "fr-FR",
+        "publisher": { "@id": "https://www.mentor-numerik.fr/#organization" }
+      },
+      {
+        "@type": "ItemList",
+        "itemListOrder": "https://schema.org/ItemListOrderDescending",
+        "numberOfItems": 6,
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "url": "https://www.mentor-numerik.fr/blog/raccourcis-clavier-excel.html", "name": "Raccourcis clavier Excel : les 30 essentiels avec exemples" },
+          { "@type": "ListItem", "position": 2, "url": "https://www.mentor-numerik.fr/blog/calculer-progression-pourcentage-excel.html", "name": "Calculer une progression en pourcentage dans Excel" },
+          { "@type": "ListItem", "position": 3, "url": "https://www.mentor-numerik.fr/blog/fonctions-texte-excel-guide.html", "name": "Fonctions texte : nettoyez et découpez vos données dans Excel" },
+          { "@type": "ListItem", "position": 4, "url": "https://www.mentor-numerik.fr/blog/formats-donnees-excel.html", "name": "Formats de données : ce que vous voyez n'est pas ce qui est stocké" },
+          { "@type": "ListItem", "position": 5, "url": "https://www.mentor-numerik.fr/blog/tableaux-croises-dynamiques-excel.html", "name": "Tableau croisé dynamique : analysez 5 000 lignes en 10 secondes" },
+          { "@type": "ListItem", "position": 6, "url": "https://www.mentor-numerik.fr/blog/recherchev-excel-guide.html", "name": "RECHERCHEV : le guide simple pour croiser vos données dans Excel" }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://www.mentor-numerik.fr/" },
+          { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.mentor-numerik.fr/blog.html" }
+        ]
+      }
+    ]
+  }
+  </script>
+
   <!-- Polices auto-hébergées : aucun appel aux serveurs Google, aucune IP transmise (RGPD) -->
   <link rel="preload" href="/fonts/plus-jakarta-sans-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
@@ -141,6 +205,19 @@
       border-radius: 50px; font-size: .68rem; font-weight: 700; letter-spacing: .04em;
       background: rgba(245,166,35,.15); color: var(--amber); border: 1px solid rgba(245,166,35,.3);
     }
+    .post-new {
+      display: inline-block; margin-left: .35rem; padding: .1rem .5rem;
+      border-radius: 50px; font-size: .68rem; font-weight: 700; letter-spacing: .04em;
+      background: rgba(0,200,160,.18); color: var(--teal); border: 1px solid rgba(0,200,160,.4);
+    }
+    .post-card.is-featured { border-color: rgba(0,200,160,.35); }
+    .breadcrumb { font-size: .78rem; color: var(--muted); margin-bottom: .9rem; }
+    .breadcrumb a { color: var(--teal); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .blog-intro { max-width: 900px; margin: 0 0 2.2rem; }
+    .blog-intro h2 { font-family: "Plus Jakarta Sans", sans-serif; font-size: 1.15rem; font-weight: 800; margin-bottom: .6rem; }
+    .blog-intro p { color: var(--muted); font-size: .93rem; line-height: 1.75; margin-bottom: .7rem; }
+    .blog-intro a { color: var(--teal); }
     .blog-cta {
       margin: 3rem 5% 5rem;
       background: var(--card-bg); border: 2px solid rgba(0,200,160,.3);
@@ -212,14 +289,28 @@
 <header class="blog-hero">
   <div class="blog-hero-bg"></div>
   <div class="blog-hero-content">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="index.html">Accueil</a> › <span>Blog</span>
+    </nav>
     <div class="section-tag">Le blog Mentor Numerik</div>
     <h1>Astuces <span class="accent">Excel</span> &amp; conseils formation</h1>
-    <p>Tutoriels pratiques, préparation à la certification ENI RS7536 et solutions de financement. Des articles courts, concrets, orientés résultats.</p>
+    <p>Tutoriels pratiques, préparation à la certification ENI RS7536 et solutions de financement. Des articles courts, concrets, orientés résultats — écrits par un formateur, pas par un moteur.</p>
   </div>
 </header>
 
 <main class="blog-list">
   <div class="blog-grid">
+
+    <!-- ARTICLE 6 -->
+    <a class="post-card is-featured" href="blog/raccourcis-clavier-excel.html">
+      <span class="post-cat">Astuce Excel · Productivité</span>
+      <h2>Raccourcis clavier Excel : les 30 essentiels, avec un exemple pour chacun</h2>
+      <p>Ctrl+1, Alt+=, F4, Ctrl+Maj+flèches, Ctrl+L… Les raccourcis qui font réellement gagner du temps, classés par usage, avec un cas concret à chaque fois. Équivalences Mac et méthode de mémorisation incluses.</p>
+      <div class="post-meta">
+        <span class="post-date">5 août 2026 · 9 min <span class="post-new">Nouveau</span></span>
+        <span class="post-read">Lire l'article →</span>
+      </div>
+    </a>
 
     <!-- ARTICLE 5 -->
     <a class="post-card" href="blog/calculer-progression-pourcentage-excel.html">
@@ -289,6 +380,13 @@
     -->
 
   </div>
+
+  <section class="blog-intro">
+    <h2>Progresser sur Excel, un article à la fois</h2>
+    <p>Ce blog rassemble les questions que nos apprenants posent le plus souvent en formation. Chaque article traite <strong>un sujet précis</strong>, avec un exemple concret, les erreurs classiques à éviter et le lien avec les compétences C1 à C6 évaluées par la <a href="index.html#certification">certification ENI RS7536</a>.</p>
+    <p>Trois grandes familles de sujets s'y croisent. Les <strong>fondamentaux</strong> d'abord — <a href="blog/formats-donnees-excel.html">formats de données</a> et <a href="blog/raccourcis-clavier-excel.html">raccourcis clavier</a> — qui conditionnent tout le reste. Les <strong>formules</strong> ensuite, de <a href="blog/recherchev-excel-guide.html">RECHERCHEV</a> aux <a href="blog/fonctions-texte-excel-guide.html">fonctions texte</a> pour nettoyer un export. L'<strong>analyse de données</strong> enfin, avec les <a href="blog/tableaux-croises-dynamiques-excel.html">tableaux croisés dynamiques</a> et les <a href="blog/calculer-progression-pourcentage-excel.html">calculs de progression</a>.</p>
+    <p>Un article ne remplace pas une formation, mais il permet de tester une méthode tout de suite sur vos propres fichiers. Si vous souhaitez aller plus loin, nos <a href="index.html#formations">parcours Excel à distance</a> sont éligibles au CPF, avec un reste à charge de 150 €. Vous pouvez aussi <a href="questionnaire.html">tester votre niveau</a> en quelques minutes.</p>
+  </section>
 </main>
 
 <div class="blog-cta">
