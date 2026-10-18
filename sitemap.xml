@@ -8,7 +8,7 @@
 
   <url>
     <loc>https://www.mentor-numerik.fr/</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -22,14 +22,64 @@
 
   <url>
     <loc>https://www.mentor-numerik.fr/blog.html</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+
+  <!-- Articles du blog : du plus récent au plus ancien -->
+  <url>
+    <loc>https://www.mentor-numerik.fr/blog/macro-vba-nettoyer-liste-contacts-excel.html</loc>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://www.mentor-numerik.fr/blog/initiation-macro-vba-excel-statut-stock.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://www.mentor-numerik.fr/blog/raccourcis-clavier-excel.html</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://www.mentor-numerik.fr/blog/calculer-progression-pourcentage-excel.html</loc>
     <lastmod>2026-08-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://www.mentor-numerik.fr/blog/fonctions-texte-excel-guide.html</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://www.mentor-numerik.fr/blog/formats-donnees-excel.html</loc>
+    <lastmod>2026-07-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://www.mentor-numerik.fr/blog/tableaux-croises-dynamiques-excel.html</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://www.mentor-numerik.fr/blog/recherchev-excel-guide.html</loc>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
